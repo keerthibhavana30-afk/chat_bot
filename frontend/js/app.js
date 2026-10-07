@@ -53,6 +53,16 @@ const App = {
         body: JSON.stringify({ languages })
       });
       return await res.json();
+    },
+
+    async getDbStatus() {
+      const res = await fetch("/api/db-status");
+      return await res.json();
+    },
+
+    async getHistory(limit = 30) {
+      const res = await fetch(`/api/history?limit=${limit}`);
+      return await res.json();
     }
   },
 

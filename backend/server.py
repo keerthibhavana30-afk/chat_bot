@@ -17,6 +17,7 @@ from .nlp.prompt_builder import PromptBuilder
 from .nlp.generator import MultilingualGenerator
 from .nlp.evaluator import PromptEvaluator
 from .nlp.llm_client import LLMClient
+from .database import MongoDatabaseManager
 
 # Initialize NLP Pipeline singletons
 language_detector = LanguageDetector()
@@ -25,6 +26,10 @@ prompt_builder = PromptBuilder()
 response_generator = MultilingualGenerator()
 prompt_evaluator = PromptEvaluator()
 llm_client = LLMClient()
+db_manager = MongoDatabaseManager()
+
+# Seed initial demonstrations to MongoDB
+db_manager.seed_exemplars(exemplar_retriever.exemplars)
 
 FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))
 
@@ -70,8 +75,24 @@ class ChatbotRequestHandler(http.server.SimpleHTTPRequestHandler):
                 "status": "healthy",
                 "title": "Low-resource and Multilingual Language Modeling via Prompt Engineering and ICL",
                 "engine": "Native In-Context Learning + Optional LLM Pass-through",
-                "languages_supported": len(language_detector.languages)
+                "languages_supported": len(language_detector.languages),
+                "database": db_manager.get_status()
             })
+            return
+
+        elif path == "/api/db-status":
+            self._send_json(200, db_manager.get_status())
+            return
+
+        elif path == "/api/history":
+            limit = int(query_params.get("limit", [50])[0])
+            session_id = query_params.get("session_id", [None])[0]
+            history = db_manager.get_conversation_history(limit=limit, session_id=session_id)
+            self._send_json(200, {"count": len(history), "history": history})
+            return
+
+        elif path == "/api/analytics":
+            self._send_json(200, db_manager.get_analytics())
             return
 
         elif path == "/api/languages":
@@ -88,14 +109,12 @@ class ChatbotRequestHandler(http.server.SimpleHTTPRequestHandler):
         elif path == "/api/exemplars":
             lang_filter = query_params.get("lang", [None])[0]
             intent_filter = query_params.get("intent", [None])[0]
-            
-            exs = exemplar_retriever.exemplars
-            if lang_filter:
-                exs = [e for e in exs if e.get("language") == lang_filter]
-            if intent_filter:
-                exs = [e for e in exs if e.get("intent") == intent_filter]
-                
-            self._send_json(200, {"count": len(exs), "exemplars": exs})
+            exs = db_manager.get_exemplars(lang=lang_filter, intent=intent_filter)
+            self._send_json(200, {
+                "count": len(exs),
+                "exemplars": exs,
+                "source": "mongodb" if db_manager.is_connected() else "local"
+            })
             return
 
         elif path == "/api/policies":
@@ -228,10 +247,28 @@ class ChatbotRequestHandler(http.server.SimpleHTTPRequestHandler):
                 "policy_applied": gen_result["policy_applied"],
                 "latency_ms": gen_result["latency_ms"],
                 "model_source": gen_result["model_source"],
-                "prompt_inspection": prompt_payload
+                "prompt_inspection": prompt_payload,
+                "session_id": body.get("session_id", "session_default")
             }
 
+            # Persist to MongoDB (or resilient in-memory fallback)
+            conv_id = db_manager.log_conversation(response_payload)
+            response_payload["conversation_id"] = conv_id
+            response_payload["storage"] = "mongodb" if db_manager.is_connected() else "in-memory"
+
             self._send_json(200, response_payload)
+            return
+
+        elif path == "/api/feedback":
+            res = db_manager.log_feedback(body)
+            self._send_json(200, {"status": "ok", "saved": res})
+            return
+
+        elif path == "/api/exemplars":
+            res = db_manager.save_exemplar(body)
+            if res:
+                exemplar_retriever.update_exemplars(db_manager.get_exemplars())
+            self._send_json(200, {"status": "ok", "saved": res})
             return
 
         elif path == "/api/evaluate":

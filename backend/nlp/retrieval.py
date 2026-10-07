@@ -12,14 +12,21 @@ import os
 from typing import List, Dict, Any, Optional
 
 class ExemplarRetriever:
-    def __init__(self, exemplars_file: Optional[str] = None):
-        if exemplars_file is None:
-            exemplars_file = os.path.join(os.path.dirname(__file__), "..", "data", "exemplars.json")
-        
-        with open(exemplars_file, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            self.exemplars: List[Dict[str, Any]] = data.get("exemplars", [])
+    def __init__(self, exemplars_file: Optional[str] = None, exemplars_list: Optional[List[Dict[str, Any]]] = None):
+        if exemplars_list is not None:
+            self.exemplars = list(exemplars_list)
+        else:
+            if exemplars_file is None:
+                exemplars_file = os.path.join(os.path.dirname(__file__), "..", "data", "exemplars.json")
+            with open(exemplars_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                self.exemplars = data.get("exemplars", [])
             
+        self._build_index()
+
+    def update_exemplars(self, new_exemplars: List[Dict[str, Any]]):
+        """Update exemplar store and rebuild BM25/TF-IDF indexes."""
+        self.exemplars = list(new_exemplars)
         self._build_index()
 
     def _tokenize(self, text: str) -> List[str]:

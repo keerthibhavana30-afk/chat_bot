@@ -26,7 +26,19 @@ const BenchmarkUI = {
       btnCloseExemplars: document.getElementById("btnCloseExemplars"),
       exemplarLangFilter: document.getElementById("exemplarLangFilter"),
       exemplarIntentFilter: document.getElementById("exemplarIntentFilter"),
-      bankList: document.getElementById("bankList")
+      bankList: document.getElementById("bankList"),
+
+      databaseModal: document.getElementById("databaseModal"),
+      btnOpenDatabase: document.getElementById("btnOpenDatabase"),
+      btnCloseDatabase: document.getElementById("btnCloseDatabase"),
+      btnRefreshDb: document.getElementById("btnRefreshDb"),
+      dbConnStatus: document.getElementById("dbConnStatus"),
+      dbTargetUri: document.getElementById("dbTargetUri"),
+      dbTargetName: document.getElementById("dbTargetName"),
+      dbCountConversations: document.getElementById("dbCountConversations"),
+      dbCountExemplars: document.getElementById("dbCountExemplars"),
+      dbHistoryList: document.getElementById("dbHistoryList"),
+      headerDbStatusText: document.getElementById("headerDbStatusText")
     };
   },
 
@@ -62,6 +74,31 @@ const BenchmarkUI = {
     this.elements.exemplarIntentFilter.addEventListener("change", () => {
       this.loadExemplarBank();
     });
+
+    // Database Modal Open/Close & Refresh
+    if (this.elements.btnOpenDatabase) {
+      this.elements.btnOpenDatabase.addEventListener("click", () => {
+        this.elements.databaseModal.classList.add("open");
+        this.loadDatabaseTelemetry();
+      });
+    }
+
+    if (this.elements.btnCloseDatabase) {
+      this.elements.btnCloseDatabase.addEventListener("click", () => {
+        this.elements.databaseModal.classList.remove("open");
+      });
+    }
+
+    if (this.elements.btnRefreshDb) {
+      this.elements.btnRefreshDb.addEventListener("click", () => {
+        this.loadDatabaseTelemetry();
+      });
+    }
+
+    // Initial check of DB status to reflect in UI
+    setTimeout(() => {
+      this.checkInitialDbStatus();
+    }, 500);
   },
 
   async executeBenchmark() {
@@ -158,6 +195,87 @@ const BenchmarkUI = {
     } catch (err) {
       console.error("[Benchmark] Exemplar bank error:", err);
       this.elements.bankList.innerHTML = `<div style="color: var(--accent-rose);">Failed to load exemplars.</div>`;
+    }
+  },
+
+  async checkInitialDbStatus() {
+    try {
+      const status = await App.api.getDbStatus();
+      if (this.elements.headerDbStatusText) {
+        if (status.connected) {
+          this.elements.headerDbStatusText.textContent = "🍃 MongoDB: Connected";
+          this.elements.headerDbStatusText.style.color = "var(--accent-emerald)";
+        } else {
+          this.elements.headerDbStatusText.textContent = "🍃 MongoDB: Standby";
+        }
+      }
+    } catch (e) {
+      console.warn("[Benchmark] DB status check error:", e);
+    }
+  },
+
+  async loadDatabaseTelemetry() {
+    if (!this.elements.dbConnStatus) return;
+    this.elements.dbConnStatus.textContent = "Connecting...";
+
+    try {
+      const status = await App.api.getDbStatus();
+      if (status.connected) {
+        this.elements.dbConnStatus.textContent = "Connected (Online)";
+        this.elements.dbConnStatus.style.color = "var(--accent-emerald)";
+        if (this.elements.headerDbStatusText) {
+          this.elements.headerDbStatusText.textContent = "🍃 MongoDB: Connected";
+        }
+      } else {
+        this.elements.dbConnStatus.textContent = "Standby (Memory Fallback)";
+        this.elements.dbConnStatus.style.color = "var(--accent-amber)";
+        if (this.elements.headerDbStatusText) {
+          this.elements.headerDbStatusText.textContent = "🍃 MongoDB: Standby";
+        }
+      }
+
+      this.elements.dbTargetUri.textContent = `URI: ${status.uri_configured || "mongodb://localhost:27017"}`;
+      this.elements.dbTargetName.textContent = status.database_name || "customersupport_chatbot";
+      this.elements.dbCountConversations.textContent = status.counts?.conversations ?? 0;
+      this.elements.dbCountExemplars.textContent = status.counts?.exemplars ?? 0;
+
+      // Fetch persisted history
+      this.elements.dbHistoryList.innerHTML = `<div style="color: var(--text-dim); padding: 8px;">Loading chat records...</div>`;
+      const histData = await App.api.getHistory(30);
+      const history = histData.history || [];
+      this.elements.dbHistoryList.innerHTML = "";
+
+      if (history.length === 0) {
+        this.elements.dbHistoryList.innerHTML = `
+          <div class="empty-state" style="padding: 1.5rem; text-align: center; color: var(--text-dim);">
+            No conversations logged yet. Send messages in the chat window to view stored telemetry records.
+          </div>
+        `;
+        return;
+      }
+
+      history.forEach((rec, idx) => {
+        const card = document.createElement("div");
+        card.className = "db-history-card";
+        const dateStr = rec.timestamp ? new Date(rec.timestamp).toLocaleTimeString() : `#${idx+1}`;
+        const langCode = rec.target_language?.code || rec.language_code || "en";
+        const langFlag = rec.target_language?.flag || "🌐";
+        const langName = rec.target_language?.name || langCode.toUpperCase();
+
+        card.innerHTML = `
+          <div class="db-history-header">
+            <span><strong>${langFlag} ${langName}</strong> • Intent: <code>${rec.intent}</code></span>
+            <span>⏱️ ${rec.latency_ms || 0}ms • ${dateStr}</span>
+          </div>
+          <div class="db-history-msg"><strong>User:</strong> "${rec.user_message}"</div>
+          <div class="db-history-resp"><strong>Bot:</strong> ${rec.response}</div>
+        `;
+        this.elements.dbHistoryList.appendChild(card);
+      });
+    } catch (err) {
+      console.error("[Benchmark] Failed to load database telemetry:", err);
+      this.elements.dbConnStatus.textContent = "Connection Error";
+      this.elements.dbConnStatus.style.color = "var(--accent-rose)";
     }
   }
 };
