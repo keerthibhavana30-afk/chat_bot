@@ -1,0 +1,514 @@
+{
+  "policies": {
+    "order_tracking": {
+      "intent": "order_tracking",
+      "title": "Order Tracking & Delivery Policy",
+      "sla": "Standard orders arrive within 3-5 business days. Express within 1-2 business days.",
+      "resolution_steps": [
+        "Verify order ID format (#ORD-XXXXX).",
+        "Check courier dispatch timestamp and transit checkpoint.",
+        "If delayed > 48 hours past delivery window, offer priority tracing or expedited replacement."
+      ],
+      "actions": ["trace_package", "resend_tracking_email", "issue_delay_credit"],
+      "translations": {
+        "en": {
+          "status_template": "Your order {order_id} is currently in transit with express carrier. Estimated arrival is within 24-48 hours.",
+          "delay_note": "We sincerely apologize for the delay. We have raised a priority tracking ticket with our fulfillment center."
+        },
+        "es": {
+          "status_template": "Su pedido {order_id} está actualmente en tránsito con servicio urgente. La entrega estimada es de 24 a 48 horas.",
+          "delay_note": "Lamentamos profundamente el retraso. Hemos abierto un ticket de seguimiento prioritario con nuestro centro logístico."
+        },
+        "fr": {
+          "status_template": "Votre commande {order_id} est actuellement en transit. La livraison est estimée sous 24 à 48 heures.",
+          "delay_note": "Nous vous prions d'excuser ce retard. Un ticket de suivi prioritaire a été ouvert auprès de notre centre de distribution."
+        },
+        "de": {
+          "status_template": "Ihre Bestellung {order_id} befindet sich auf dem Versandweg. Die voraussichtliche Zustellung erfolgt in 24-48 Stunden.",
+          "delay_note": "Wir entschuldigen uns für die Verzögerung. Ein bevorzugtes Nachverfolgungsticket wurde für Sie erstellt."
+        },
+        "zh": {
+          "status_template": "您的订单 {order_id} 正在快递运输中，预计将在24-48小时内送达。",
+          "delay_note": "对于物流延误我们深表歉意。我们已向仓储配送中心提交了加急核查工单。"
+        },
+        "hi": {
+          "status_template": "आपका ऑर्डर {order_id} वर्तमान में ट्रांज़िट में है। 24 से 48 घंटों के भीतर डिलीवरी होने की उम्मीद है।",
+          "delay_note": "देरी के लिए हम क्षमा चाहते हैं। हमने पूर्ति केंद्र के साथ प्राथमिकता ट्रैकिंग टिकट दर्ज कर दिया है।"
+        },
+        "ar": {
+          "status_template": "طلبكم {order_id} قيد الشحن حالياً مع شركة النقل السريع. من المتوقع الوصول خلال 24-48 ساعة.",
+          "delay_note": "نعتذر بشدة عن التأخير. لقد قمنا بفتح تذكرة متابعة عاجلة مع مستودعات الشحن."
+        },
+        "pt": {
+          "status_template": "Seu pedido {order_id} está a caminho. A previsão de entrega é de 24 a 48 horas úteis.",
+          "delay_note": "Pedimos desculpas pelo atraso. Abrimos um chamado prioritário junto ao centro de distribuição."
+        },
+        "ru": {
+          "status_template": "Ваш заказ {order_id} находится в пути. Ожидаемая доставка в течение 24-48 часов.",
+          "delay_note": "Приносим искренние извинения за задержку. Мы открыли приоритетную заявку на розыск отправления."
+        },
+        "sw": {
+          "status_template": "Agizo lako {order_id} lipo safarini kwa sasa. Linatarajiwa kuwasili ndani ya saa 24 hadi 48.",
+          "delay_note": "Tunaomba radhi kwa kuchelewa. Tumefungua ombi la dharura la kufuatilia mzigo wako kwenye kituo cha usafirishaji."
+        },
+        "yo": {
+          "status_template": "Àṣẹ rẹ {order_id} ti wà lójú ọ̀nà pẹ̀lú ilé-iṣẹ́ agbébìkèérò. Yóò dé láàárín wákàtí 24 sí 48.",
+          "delay_note": "A tọrọ àforíjì fún ìdádúró yìí. A ti gbé ìwé ìbéèrè kánjúkánjú dìde láti wádìí ibi tí ẹrù rẹ wà."
+        },
+        "qu": {
+          "status_template": "Rantisqayki {order_id} purichkanñam. 24-48 horakunapi chayamunqa.",
+          "delay_note": "Pampachawayku unaykusqanmanta. Utqhaylla maskanapaq willakuyta qillqaykuñam apachina wasiman."
+        },
+        "bn": {
+          "status_template": "আপনার অর্ডার {order_id} বর্তমানে ডেলিভারির পথে রয়েছে। পরবর্তী ২৪-৪৮ ঘণ্টার মধ্যে পৌঁছানোর সম্ভাবনা রয়েছে।",
+          "delay_note": "বিলম্বের জন্য আমরা আন্তরিকভাবে দুঃখিত। আমরা কুরিয়ার ডিপোতে জরুরি ট্র্যাকিং নির্দেশ পাঠিয়েছি।"
+        },
+        "ta": {
+          "status_template": "உங்கள் ஆர்டர் {order_id} தற்போது விரைவு கூரியர் மூலம் அனுப்பப்பட்டு வழியில் உள்ளது. 24-48 மணி நேரத்திற்குள் வந்து சேரும்.",
+          "delay_note": "தாமதத்திற்கு வருந்துகிறோம். உங்கள் பார்சலை விரைவுபடுத்த விநியோக மையத்திற்கு முன்னுரிமை கோரிக்கை விடுத்துள்ளோம்."
+        },
+        "eu": {
+          "status_template": "Zure {order_id} eskaera bidean da mezulari azkarrarekin. 24-48 orduko epean iritsiko dela aurreikusten da.",
+          "delay_note": "Barkatu atzerapena. Lehentasunezko jarraipen-txartela ireki dugu banaketa zentroarekin."
+        },
+        "tl": {
+          "status_template": "Ang iyong order na {order_id} ay kasalukuyan nang ipinapadala. Inaasahang darating ito sa loob ng 24-48 oras.",
+          "delay_note": "Humihingi po kami ng paumanhin sa abala. Nagsumite na po kami ng priority ticket para mapabilis ang paghahatid."
+        },
+        "am": {
+          "status_template": "ትዕዛዝዎ {order_id} በመጓጓዝ ላይ ይገኛል። በሚቀጥሉት 24-48 ሰዓታት ውስጥ ይደርሳል።",
+          "delay_note": "ስለዘገየብዎት ይቅርታ እንጠይቃለን። እቃዎትን በፍጥነት ለመከታተል አፋጣኝ ጥያቄ ለስርጭት ማዕከሉ ልከናል።"
+        },
+        "te": {
+          "status_template": "మీ ఆర్డర్ {order_id} ప్రస్తుతం ఎక్స్‌ప్రెస్ కొరియర్ ద్వారా రవాణాలో ఉంది. రాబోయే 24-48 గంటల్లో డెలివరీ చేయబడుతుంది.",
+          "delay_note": "ఆలస్యానికి మేము క్షమాపణలు కోరుతున్నాము. మీ పార్శిల్ ట్రాకింగ్ కోసం మా డెలివరీ బృందానికి అత్యవసర టికెట్ పంపాము."
+        }
+      }
+    },
+    "refund_cancellation": {
+      "intent": "refund_cancellation",
+      "title": "Refund, Return & Cancellation Policy",
+      "sla": "Full refunds within 30 days of purchase for damaged or returned goods. Refunds processed in 3-5 business days.",
+      "resolution_steps": [
+        "Confirm item condition and order number.",
+        "Initiate prepaid return shipping label.",
+        "Execute refund to original payment card or issue 110% store credit instantly."
+      ],
+      "actions": ["generate_return_label", "issue_card_refund", "issue_store_credit"],
+      "translations": {
+        "en": {
+          "approval_note": "Your return request has been authorized under our 30-day satisfaction guarantee. We can refund {amount} to your original payment method in 3-5 business days, or provide instant store credit with a 10% bonus.",
+          "next_step": "A prepaid return label has been emailed to you."
+        },
+        "es": {
+          "approval_note": "Su solicitud de devolución ha sido aprobada bajo nuestra garantía de satisfacción de 30 días. Podemos reembolsar el importe a su método de pago original en 3-5 días laborables o emitir crédito instantáneo con un 10% adicional.",
+          "next_step": "Hemos enviado una etiqueta de devolución prepagada a su correo."
+        },
+        "fr": {
+          "approval_note": "Votre demande de retour a été approuvée conformément à notre garantie de 30 jours. Le remboursement sera crédité sous 3 à 5 jours ouvrés.",
+          "next_step": "Une étiquette de retour prépayée vous a été envoyée par courriel."
+        },
+        "de": {
+          "approval_note": "Ihre Rückgabeanforderung wurde im Rahmen unserer 30-Tage-Zufriedenheitsgarantie genehmigt. Die Erstattung erfolgt in 3-5 Werktagen auf Ihr Zahlungsmittel.",
+          "next_step": "Ein kostenloses Rücksendeetikett wurde per E-Mail versandt."
+        },
+        "zh": {
+          "approval_note": "您的退货申请已通过30天无忧保障审核。退款将在3-5个工作日内退回原支付账户，或选择即时到账的110%商城积分。",
+          "next_step": "预付费的退货快递运单已发送至您的电子邮箱。"
+        },
+        "hi": {
+          "approval_note": "हमारी 30-दिवसीय गारंटी के तहत आपका रिटर्न स्वीकार कर लिया गया है। 3-5 कार्य दिवसों में राशि आपके मूल खाते में वापस भेज दी जाएगी।",
+          "next_step": "एक प्रीपेड रिटर्न लेबल आपके ईमेल पर भेज दिया गया है।"
+        },
+        "ar": {
+          "approval_note": "تمت الموافقة على طلب الإرجاع الخاص بك وفقاً لضمان 30 يوماً. سيتم رد المبلغ إلى وسيلة الدفع الأصلية خلال 3-5 أيام عمل.",
+          "next_step": "تم إرسال بوليصة الإرجاع مسبقة الدفع إلى بريدك الإلكتروني."
+        },
+        "pt": {
+          "approval_note": "Sua solicitação de devolução foi aprovada. O estorno será creditado em seu meio de pagamento original em 3 a 5 dias úteis.",
+          "next_step": "Enviamos uma etiqueta de postagem pré-paga para o seu e-mail."
+        },
+        "ru": {
+          "approval_note": "Ваш запрос на возврат подтвержден по нашей 30-дневной гарантии. Возврат средств будет зачислен в течение 3-5 рабочих дней.",
+          "next_step": "Предоплаченная транспортная накладная отправлена на ваш e-mail."
+        },
+        "sw": {
+          "approval_note": "Ombi lako la kurudisha bidhaa limeidhinishwa chini ya sera yetu ya siku 30. Pesa zako zitarudishwa kwenye akaunti yako ndani ya siku 3-5 za kazi au unaweza kuchukua salio la duka na bonasi ya 10%.",
+          "next_step": "Kibarua cha usafirishaji wa bure kimetumwa kwenye barua pepe yako."
+        },
+        "yo": {
+          "approval_note": "A ti gba ìbéèrè ìpadàbọ̀ ẹrù rẹ wọlé lábẹ́ àdéhùn ọjọ́ 30 wa. A ó san owó rẹ padà sínú káàdì rẹ láàárín ọjọ́ iṣẹ́ 3 sí 5.",
+          "next_step": "A ti fi àmì ìwé ìpadàbọ̀ tí a ti sanwó lé lórí ránṣẹ́ sí lẹ́tà-ayélujára rẹ."
+        },
+        "qu": {
+          "approval_note": "Rantisqa kutichiy mañakuyniyki chaskisqañam 30 p'unchaw qhawariypi. Qullqiykita 3-5 p'unchawpi kutichisaykiku rantinapaq khipuykiman.",
+          "next_step": "Kutichina rapita apachiykuñam chaski-chaskiykiman."
+        },
+        "bn": {
+          "approval_note": "আমাদের ৩০ দিনের সন্তুষ্টি গ্যারান্টির অধীনে আপনার রিফান্ড আবেদন গৃহীত হয়েছে। ৩-৫ কার্যদিবসের মধ্যে আপনার মূল পেমেন্ট মাধ্যমে টাকা ফেরত পাবেন।",
+          "next_step": "একটি প্রিপেইড রিটার্ন লেবেল আপনার ইমেইলে পাঠিয়ে দেওয়া হয়েছে।"
+        },
+        "ta": {
+          "approval_note": "எங்களின் 30-நாள் உத்தரவாதக் கொள்கையின்படி உங்கள் திரும்பப் பெறும் கோரிக்கை ஏற்கப்பட்டது. 3-5 வேலை நாட்களில் உங்கள் வங்கிக் கணக்கில் பணம் திருப்பிச் செலுத்தப்படும்.",
+          "next_step": "கட்டணமில்லா ரிட்டர்ன் லேபிள் உங்கள் மின்னஞ்சலுக்கு அனுப்பப்பட்டுள்ளது."
+        },
+        "eu": {
+          "approval_note": "Zure itzulketa-eskaera onartu da gure 30 eguneko bermearekin. Dirua 3-5 laneguneko epean itzuliko da zure kontura.",
+          "next_step": "Aurrez ordaindutako itzulketa-etiketa bidali dizugu postaz."
+        },
+        "tl": {
+          "approval_note": "Inaprubahan na po ang inyong return request sa ilalim ng aming 30-day guarantee. Iba-balik ang inyong bayad sa loob ng 3-5 araw ng trabaho.",
+          "next_step": "Nagpadala na po kami ng prepaid return shipping label sa inyong email."
+        },
+        "am": {
+          "approval_note": "በ30 ቀናት የዋስትና ደንባችን መሰረት እቃውን የመመለስ እና የገንዘብ ተመላሽ ጥያቄዎ ጸድቋል። በ3-5 የስራ ቀናት ውስጥ ገንዘብዎ ወደ አካውንትዎ ይመለሳል።",
+          "next_step": "የነፃ መመለሻ መለያ ወረቀት ወደ ኢሜይልዎ ተልኳል።"
+        },
+        "te": {
+          "approval_note": "మా 30 రోజుల గ్యారెంటీ పాలసీ ప్రకారం మీ వస్తువుల రిటర్న్ అభ్యర్థన ఆమోదించబడింది. 3-5 పనిదినాల్లో మీ ఖాతాకు పూర్తి మొత్తం రీఫండ్ చేయబడుతుంది.",
+          "next_step": "ఉచిత ప్రీపెయిడ్ రిటర్న్ లేబుల్ మీ ఈమెయిల్‌కు పంపబడింది."
+        }
+      }
+    },
+    "account_access": {
+      "intent": "account_access",
+      "title": "Account Access & Security Protocol",
+      "sla": "Instant password reset via OTP/email token. Manual security unlock within 15 minutes.",
+      "resolution_steps": [
+        "Verify registered customer email or phone number.",
+        "Dispatch cryptographic 6-digit one-time password (OTP).",
+        "Offer temporary bypass link if two-factor authenticator app is lost."
+      ],
+      "actions": ["send_password_reset", "unlock_account", "reset_2fa"],
+      "translations": {
+        "en": {
+          "security_note": "For your protection, we have triggered a secure account recovery link to your registered email address. This link remains valid for 30 minutes.",
+          "instruction": "Please click the link to verify your identity and set a new strong password."
+        },
+        "es": {
+          "security_note": "Por su seguridad, hemos enviado un enlace de recuperación seguro a su correo electrónico registrado. Es válido por 30 minutos.",
+          "instruction": "Haga clic en el enlace para verificar su identidad y crear una contraseña nueva y segura."
+        },
+        "fr": {
+          "security_note": "Pour votre sécurité, un lien de réinitialisation sécurisé a été envoyé à votre adresse e-mail. Il est valide 30 minutes.",
+          "instruction": "Veuillez cliquer sur le lien pour vérifier votre identité et définir un nouveau mot de passe."
+        },
+        "de": {
+          "security_note": "Zu Ihrer Sicherheit haben wir einen sicheren Wiederherstellungslink an Ihre hinterlegte E-Mail-Adresse gesendet (30 Min. gültig).",
+          "instruction": "Bitte klicken Sie auf den Link, um Ihre Identität zu bestätigen und ein neues Passwort festzulegen."
+        },
+        "zh": {
+          "security_note": "为了保护您的账户安全，我们已向您的注册邮箱发送了一条加密重置链接，该链接在30分钟内有效。",
+          "instruction": "请点击邮件中的链接验证身份并设置全新的安全密码。"
+        },
+        "hi": {
+          "security_note": "आपकी सुरक्षा के लिए, हमने आपके पंजीकृत ईमेल पर एक सुरक्षित पासवर्ड रीसेट लिंक भेजा है जो 30 मिनट तक वैध रहेगा।",
+          "instruction": "कृपया अपनी पहचान सत्यापित करने और नया पासवर्ड बनाने के लिए लिंक पर क्लिक करें।"
+        },
+        "ar": {
+          "security_note": "لحماية حسابك، أرسلنا رابط إعادة تعيين آمن إلى بريدك الإلكتروني المسجل، وهو صالح لمدة 30 دقيقة.",
+          "instruction": "يرجى النقر على الرابط لتأكيد هويتك وتعيين كلمة مرور قوية جديدة."
+        },
+        "pt": {
+          "security_note": "Para sua segurança, enviamos um link seguro de recuperação para o seu e-mail cadastrado (válido por 30 minutos).",
+          "instruction": "Por favor, clique no link para validar sua identidade e cadastrar uma nova senha."
+        },
+        "ru": {
+          "security_note": "В целях безопасности мы отправили ссылку для сброса пароля на ваш контактный e-mail (действительна 30 минут).",
+          "instruction": "Перейдите по ссылке, чтобы подтвердить личность и установить новый пароль."
+        },
+        "sw": {
+          "security_note": "Kwa usalama wa akaunti yako, tumetuma kiungo salama cha kubadilisha nenosiri kwenye barua pepe yako (kinadumu kwa dakika 30).",
+          "instruction": "Tafadhali bofya kiungo hicho kuthibitisha utambulisho wako na kuweka nenosiri jipya imara."
+        },
+        "yo": {
+          "security_note": "Fún ààbò àkọọ́lẹ̀ rẹ, a ti fi àtẹ ìtúnṣe ọ̀rọ̀-ìpamọ́ tó dánilójú ránṣẹ́ sí lẹ́tà-ayélujára rẹ tí ó wà fún ìṣẹ́jú 30.",
+          "instruction": "Ẹ tẹ orí àtẹ náà láti fi ìdánimọ̀ rẹ hàn kí o sì yan ọ̀rọ̀-ìpamọ́ tuntun tó lágbára."
+        },
+        "qu": {
+          "security_note": "Allin kankaykipaq, apachiykuñam khipu kutichiq llikata chaski-chaskiykiman (30 chinini kawsanqa).",
+          "instruction": "Chay llikapi ñit'iy khipuykita musuqyachinapaq."
+        },
+        "bn": {
+          "security_note": "আপনার অ্যাকাউন্টের সুরক্ষার জন্য আমরা নিবন্ধিত ইমেইলে একটি সুরক্ষিত পাসওয়ার্ড রিসেট লিঙ্ক পাঠিয়েছি (মেয়াদ ৩০ মিনিট)।",
+          "instruction": "অনুগ্রহ করে আপনার পরিচয় নিশ্চিত করতে এবং নতুন পাসওয়ার্ড সেট করতে লিঙ্কটিতে ক্লিক করুন।"
+        },
+        "ta": {
+          "security_note": "உங்கள் பாதுகாப்பிற்காக, உங்கள் பதிவுசெய்த மின்னஞ்சலுக்கு 30 நிமிடங்கள் செல்லுபடியாகும் கடவுச்சொல் மீட்டமைப்பு இணைப்பை அனுப்பியுள்ளோம்.",
+          "instruction": "உங்கள் அடையாளத்தை உறுதிப்படுத்தி புதிய கடவுச்சொல்லை அமைக்க இணைப்பைக் கிளிக் செய்யவும்."
+        },
+        "eu": {
+          "security_note": "Zure segurtasunerako, pasahitza berrezartzeko esteka seguru bat bidali dugu zure helbide elektronikora (30 minutuz baliozkoa).",
+          "instruction": "Mesedez, egin klik estekan zure nortasuna egiaztatzeko eta pasahitz berri sendo bat ezartzeko."
+        },
+        "tl": {
+          "security_note": "Para sa iyong seguridad, nagpadala po kami ng secure password reset link sa iyong email (valid ng 30 minuto).",
+          "instruction": "Pindutin lamang po ang link upang patunayan ang iyong pagkakakilanlan at gumawa ng bagong password."
+        },
+        "am": {
+          "security_note": "ለመለያዎ ደህንነት ሲባል የይለፍ ቃል መቀየሪያ ደህንነቱ የተጠበቀ ማስፈንጠሪያ ወደ ኢሜይልዎ ልከናል። ለ30 ደቂቃዎች ይሰራል።",
+          "instruction": "እባክዎ ማንነትዎን ለማረጋገጥ እና አዲስ ጠንካራ የይለፍ ቃል ለማስገባት ሊንኩን ይጫኑ።"
+        },
+        "te": {
+          "security_note": "మీ ఖాతా భద్రత కోసం, మీ రిజిస్టర్డ్ ఈమెయిల్‌కు సురక్షితమైన పాస్‌వర్డ్ రీసెట్ లింక్‌ను పంపాము (ఇది 30 నిమిషాలు పనిచేస్తుంది).",
+          "instruction": "మీ గుర్తింపును ధృవీకరించి కొత్త పాస్‌వర్డ్ సెట్ చేసుకోవడానికి దయచేసి ఆ లింక్‌ను క్లిక్ చేయండి."
+        }
+      }
+    },
+    "billing_issues": {
+      "intent": "billing_issues",
+      "title": "Billing & Payment Reconciliation Policy",
+      "sla": "Duplicate transaction charges are reversed automatically within 24-48 hours.",
+      "resolution_steps": [
+        "Extract invoice number (#INV-XXXXX) and transaction amount.",
+        "Check payment gateway ledger for duplicate authorization holds.",
+        "Release authorization hold or credit balance immediately."
+      ],
+      "actions": ["reverse_duplicate_charge", "download_invoice_pdf", "verify_card_gateway"],
+      "translations": {
+        "en": {
+          "billing_note": "We identified the duplicate billing record on invoice {invoice_id}. The pending authorization hold will be automatically reversed to your statement within 24-48 hours.",
+          "resolution": "No action is needed on your part. A formal credit memo has been issued to your billing profile."
+        },
+        "es": {
+          "billing_note": "Hemos localizado el cargo duplicado en la factura {invoice_id}. La retención de fondos se cancelará automáticamente en su cuenta en 24-48 horas.",
+          "resolution": "No necesita hacer nada más. Se ha emitido una nota de crédito formal a su cuenta."
+        },
+        "fr": {
+          "billing_note": "Nous avons repéré le prélèvement en double sur la facture {invoice_id}. Le montant sera recrédité sur votre relevé sous 24 à 48 heures.",
+          "resolution": "Aucune démarche supplémentaire n'est requise de votre part. Une note de crédit a été générée."
+        },
+        "de": {
+          "billing_note": "Die doppelte Buchung zur Rechnung {invoice_id} wurde lokalisiert. Der autorisierte Betrag wird innerhalb von 24-48 Stunden freigegeben.",
+          "resolution": "Sie müssen keine weiteren Schritte unternehmen. Eine Gutschrift wurde verbucht."
+        },
+        "zh": {
+          "billing_note": "我们已在账单 {invoice_id} 中核查到重复扣款记录。银行预授权将在24-48小时内自动原路退回并解除占用。",
+          "resolution": "您无需进行其他操作，电子退款凭单已同步发送至您的财务中心。"
+        },
+        "hi": {
+          "billing_note": "हमने इनवॉइस {invoice_id} पर दोहरे शुल्क की पहचान कर ली है। अतिरिक्त कटी राशि 24-48 घंटों के भीतर आपके बैंक खाते में वापस आ जाएगी।",
+          "resolution": "आपको कुछ करने की आवश्यकता नहीं है। क्रेडिट नोट जारी कर दिया गया है।"
+        },
+        "ar": {
+          "billing_note": "لقد تحققنا من الخصم المزدوج في الفاتورة {invoice_id}. سيتم إلغاء الحجز المالي وعودة المبلغ إلى حسابك خلال 24-48 ساعة.",
+          "resolution": "لا يلزم أي إجراء منك. تم إصدار إشعار دائن رسمي لحسابك."
+        },
+        "pt": {
+          "billing_note": "Identificamos a cobrança duplicada na fatura {invoice_id}. O valor cobrado a mais será estornado em seu extrato dentro de 24 a 48 horas.",
+          "resolution": "Nenhuma ação é necessária. Foi emitida uma nota de crédito em seu cadastro."
+        },
+        "ru": {
+          "billing_note": "Мы обнаружили двойное списание по счету {invoice_id}. Заблокированные средства будут автоматически разморожены банком в течение 24-48 часов.",
+          "resolution": "Вам ничего делать не требуется, кредитная нота уже оформлена."
+        },
+        "sw": {
+          "billing_note": "Tumegundua malipo ya ziada yaliyokatwa mara mbili kwenye ankara {invoice_id}. Pesa zilizokatwa zitarudishwa benki yako ndani ya saa 24-48.",
+          "resolution": "Huhitaji kufanya lolote. Stakabadhi ya kurejesha fedha imetolewa."
+        },
+        "yo": {
+          "billing_note": "A ti rí owó àlékún tí wọ́n gbà lórí ìwé-owó {invoice_id}. Owó náà yóò padà sínú àkọọ́lẹ̀ báńkì rẹ láàárín wákàtí 24 sí 48.",
+          "resolution": "O kò nílò láti ṣe ohunkóhun mọ́. A ti ṣe àkọsílẹ̀ ìsanpadà owó fún ọ."
+        },
+        "qu": {
+          "billing_note": "Iskay kuti hurqusqa qullqita tarini factura {invoice_id} nisqapi. Qullqiyki kutipunqa 24-48 horakunallapi.",
+          "resolution": "Manan imatapas ruwanaykichu, ña allichasqañam kachkan."
+        },
+        "bn": {
+          "billing_note": "ইনভয়েস {invoice_id} এর ডুপ্লিকেট অতিরিক্ত পেমেন্ট রেকর্ডটি শনাক্ত করা হয়েছে। ২৪-৪৮ ঘণ্টার মধ্যে টাকা আপনার অ্যাকাউন্টে ফিরে আসবে।",
+          "resolution": "আপনার আর কিছু করার প্রয়োজন নেই। একটি অফিসিয়াল ক্রেডিট নোট তৈরি হয়েছে।"
+        },
+        "ta": {
+          "billing_note": "விலைப்பட்டியல் {invoice_id} இல் ஏற்பட்ட கூடுதல் கட்டணப் பிடிப்பு கண்டறியப்பட்டது. 24-48 மணி நேரத்திற்குள் பணம் மீண்டும் உங்கள் கணக்கில் வரவு வைக்கப்படும்.",
+          "resolution": "நீங்கள் இனி எதுவும் செய்யத் தேவையில்லை. இதற்கான வரவு ரசீது வழங்கப்பட்டுள்ளது."
+        },
+        "eu": {
+          "billing_note": "{invoice_id} fakturako kobrantza bikoiztua egiaztatu dugu. Gehiegizko kargua 24-48 orduko epean desegingo da zure laburpenean.",
+          "resolution": "Ez duzu beste ezer egin behar. Ordainagiri-abala sortuta dago."
+        },
+        "tl": {
+          "billing_note": "Natunton na po namin ang dobleng bawas para sa invoice {invoice_id}. Ang sobrang halaga ay kusa nang ibabalik sa inyong bangko sa loob ng 24-48 oras.",
+          "resolution": "Wala na po kayong kailangang gawin. Naglabas na po kami ng opisyal na credit memo."
+        },
+        "am": {
+          "billing_note": "በደረሰኝ {invoice_id} ላይ በስህተት ሁለት ጊዜ የተቆረጠውን ክፍያ አግኝተነዋል። ትርፍ የተቆረጠው ገንዘብ በ24-48 ሰዓታት ውስጥ ወደ ሂሳብዎ ይመለሳል።",
+          "resolution": "ከእርስዎ ምንም የሚጠበቅ ነገር የለም። ይፋዊ የክሬዲት ማስታወሻ ተዘጋጅቷል።"
+        },
+        "te": {
+          "billing_note": "ఇన్‌వాయిస్ {invoice_id} లో అదనంగా జరిగిన డబుల్ ఛార్జ్ మేము గుర్తించాము. అదనపు మొత్తం 24-48 గంటల్లో మీ బ్యాంక్ ఖాతాకు తిరిగి వస్తుంది.",
+          "resolution": "మీరు ఇంకేమీ చేయనవసరం లేదు. అధికారిక క్రెడిట్ మెమో జారీ చేయబడింది."
+        }
+      }
+    },
+    "technical_support": {
+      "intent": "technical_support",
+      "title": "Hardware, Device & Troubleshooting Support",
+      "sla": "1-Year comprehensive hardware manufacturer warranty covers defects and hardware malfunctions.",
+      "resolution_steps": [
+        "Determine device symptoms (power, connectivity, audio, firmware).",
+        "Perform hard restart (power button hold for 10 seconds).",
+        "If unresolved, issue RMA (Return Merchandise Authorization) number for free warranty replacement."
+      ],
+      "actions": ["troubleshooting_wizard", "issue_rma_label", "check_firmware_status"],
+      "translations": {
+        "en": {
+          "diagnostic_steps": "Let's diagnose your device. 1) Unplug power for 15 seconds. 2) Press and hold the power button for 10 seconds to discharge residual capacitors. 3) Reconnect to a known working wall outlet.",
+          "warranty_offer": "If it remains unresponsive, your 1-year manufacturer warranty covers a free expedited replacement."
+        },
+        "es": {
+          "diagnostic_steps": "Hagamos un diagnóstico rápido: 1) Desconecte el dispositivo por 15 segundos. 2) Mantenga presionado el botón de encendido 10 segundos. 3) Vuelva a conectarlo directamente a la toma de corriente.",
+          "warranty_offer": "Si el problema persiste, su garantía de 1 año cubre un reemplazo gratuito sin costo adicional."
+        },
+        "fr": {
+          "diagnostic_steps": "Effectuons un diagnostic : 1) Débranchez l'appareil pendant 15 secondes. 2) Maintenez le bouton d'alimentation enfoncé 10 secondes. 3) Rebranchez sur une prise secteur directe.",
+          "warranty_offer": "Si l'appareil ne redémarre pas, votre garantie constructeur de 1 an prend en charge un échange à neuf."
+        },
+        "de": {
+          "diagnostic_steps": "Führen wir einen schnellen Funktionstest durch: 1) Trennen Sie das Gerät für 15 Sekunden vom Strom. 2) Halten Sie die Einschalttaste 10 Sekunden lang gedrückt. 3) Schließen Sie es erneut an.",
+          "warranty_offer": "Sollte das Gerät defekt bleiben, greift Ihre einjährige Herstellergarantie für einen kostenfreien Austausch."
+        },
+        "zh": {
+          "diagnostic_steps": "让我们排查硬件故障：1) 拔掉电源静置15秒；2) 长按电源键10秒释放余电；3) 重新插上电源开机测试。",
+          "warranty_offer": "如果设备仍无法正常启动，您享有的1年质保支持免费换新服务。"
+        },
+        "hi": {
+          "diagnostic_steps": "आइए डिवाइस की जांच करें: 1) डिवाइस को 15 सेकंड के लिए पावर से अलग करें। 2) पावर बटन को 10 सेकंड तक दबाकर रखें। 3) फिर से प्लग लगाकर चालू करें।",
+          "warranty_offer": "यदि समस्या बनी रहती है, तो आपकी 1-वर्षीय वारंटी के तहत मुफ्त रिप्लेसमेंट दिया जाएगा।"
+        },
+        "ar": {
+          "diagnostic_steps": "دعنا نجري فحصاً سريعاً: 1) افصل الجهاز عن مصدر الطاقة لمدة 15 ثانية. 2) اضغط مطولاً على زر التشغيل 10 ثوانٍ. 3) أعد التوصيل بمقبس حائطي مباشر.",
+          "warranty_offer": "إذا استمرت المشكلة، فإن ضمانك لمدة عام يغطي استبدال الجهاز مجاناً فوراً."
+        },
+        "pt": {
+          "diagnostic_steps": "Vamos realizar um teste rápido: 1) Desconecte o aparelho da tomada por 15 segundos. 2) Pressione o botão liga/desliga por 10 segundos. 3) Ligue-o novamente.",
+          "warranty_offer": "Se persistir sem resposta, a garantia de 1 ano cobre a troca gratuita por um novo produto."
+        },
+        "ru": {
+          "diagnostic_steps": "Давайте выполним базовую диагностику: 1) Отключите устройство от сети на 15 секунд. 2) Удерживайте кнопку питания 10 секунд. 3) Подключите обратно к розетке.",
+          "warranty_offer": "Если неполадка не устранена, ваша 1-летняя гарантия дает право на бесплатную замену."
+        },
+        "sw": {
+          "diagnostic_steps": "Tujaribu kutatua tatizo hili: 1) Chomoa waya wa umeme kwa sekunde 15. 2) Bonyeza na ushikilie kitufe cha kuwasha kwa sekunde 10. 3) Chomeka tena kwenye soketi ya ukutani.",
+          "warranty_offer": "Kama bado haifanyi kazi, udhamini wako wa mwaka 1 unakupa haki ya kubadilishiwa kifaa kipya bila gharama."
+        },
+        "yo": {
+          "diagnostic_steps": "Ẹ jẹ́ ká gbìyànjú láti tún un ṣe: 1) Yọ okun iná fún ìṣẹ́jú-àáyá 15. 2) Tẹ bọ́tìnì ìtanná mọ́lẹ̀ fún ìṣẹ́jú-àáyá 10. 3) Tún un fi sínú iná.",
+          "warranty_offer": "Tí kò bá ṣiṣẹ́ síbẹ̀, àdéhùn ọdún kan rẹ fún ọ ní ẹ̀tọ́ láti gba ẹ̀rọ tuntun lọ́fẹ̀ẹ́."
+        },
+        "qu": {
+          "diagnostic_steps": "Utqhaylla allichasun: 1) 15 chinichallapi pinchikiyta urqukuy. 2) 10 chinichallapi hap'iy ñit'inata. 3) Kaqmanta k'askachiy.",
+          "warranty_offer": "Mana kawsaptinqa, huk watapaq garantiyaykiwan musuq aparatota qusaykiku mana qullqillapaq."
+        },
+        "bn": {
+          "diagnostic_steps": "আসুন প্রাথমিক সমাধান পরীক্ষা করি: ১) ১৫ সেকেন্ডের জন্য পাওয়ার প্লাগ খুলে রাখুন। ২) পাওয়ার বোতামটি ১০ সেকেন্ড চেপে ধরে রাখুন। ৩) সরাসরি ওয়াল সকেটে আবার সংযোগ করুন।",
+          "warranty_offer": "যদি কাজ না করে, আপনার ১ বছরের ওয়ারেন্টির অধীনে সম্পূর্ণ বিনামূল্যে নতুন ডিভাইস দেওয়া হবে।"
+        },
+        "ta": {
+          "diagnostic_steps": "விரைவாக சரிபார்க்கலாம்: 1) சாதனத்தை 15 வினாடிகள் அணைத்து வைக்கவும். 2) பவர் பொத்தானை 10 வினாடிகள் அழுத்திப் பிடிக்கவும். 3) மீண்டும் சார்ஜ் செய்து இயக்கவும்.",
+          "warranty_offer": "சிக்கல் தீரவில்லை எனில், உங்கள் 1 வருட உத்தரவாதத்தின் கீழ் இலவசமாக புதிய மாற்று சாதனம் வழங்கப்படும்."
+        },
+        "eu": {
+          "diagnostic_steps": "Egin dezagun proba azkar bat: 1) Deskonektatu korrontea 15 segundoz. 2) Eduki pizteko botoia sakatuta 10 segundoz. 3) Konektatu berriro entxufe batera.",
+          "warranty_offer": "Pizten ez bada, urtebeteko bermeak doako ordezko gailu berria eskaintzen dizu."
+        },
+        "tl": {
+          "diagnostic_steps": "Subukan natin ang mabilisang pag-troubleshoot: 1) Hugutin sa saksakan ng 15 segundo. 2) Pindutin nang matagal ang power button ng 10 segundo. 3) Isaksak muli sa gumaganang outlet.",
+          "warranty_offer": "Kung hindi pa rin gumana, sakop ng iyong 1-year warranty ang libreng replacement."
+        },
+        "am": {
+          "diagnostic_steps": "መፍትሄ እንፈልግለት፡ 1) የመሳሪያውን የኤሌክትሪክ ገመድ ለ15 ሰከንድ ይንቀሉ። 2) የማብሪያ ቁልፉን ለ10 ሰከንድ ተጭነው ይያዙ። 3) እንደገና ከኤሌክትሪክ ሶኬት ጋር ያገናኙ።",
+          "warranty_offer": "ችግሩ ካልተፈታ የ1 ዓመት ዋስትና ስላሎት ያለ ምንም ክፍያ አዲስ እቃ ይቀየሩልዎታል።"
+        },
+        "te": {
+          "diagnostic_steps": "త్వరిత పరిష్కారం చూద్దాం: 1) పరికరాన్ని 15 సెకన్లు పవర్ నుండి అన్‌ప్లగ్ చేయండి. 2) పవర్ బటన్‌ను 10 సెకన్ల పాటు నొక్కి ఉంచండి. 3) మళ్లీ కనెక్ట్ చేసి ఆన్ చేయండి.",
+          "warranty_offer": "సమస్య అలాగే ఉంటే, మీ 1 సంవత్సరం వారంటీ కింద ఉచితంగా సరికొత్త రీప్లేస్‌మెంట్ అందించబడుతుంది."
+        }
+      }
+    },
+    "human_escalation": {
+      "intent": "human_escalation",
+      "title": "Human Support Specialist Handoff",
+      "sla": "Direct live agent transfer within 3-5 minutes with prioritized context preservation.",
+      "resolution_steps": [
+        "Acknowledge customer frustration with empathetic tone.",
+        "Compile chat context, detected intent, entities, and sentiment score.",
+        "Transfer ticket to senior tier-2 bilingual specialist."
+      ],
+      "actions": ["transfer_to_human_agent", "create_urgent_crm_ticket", "preserve_chat_context"],
+      "translations": {
+        "en": {
+          "handoff_note": "I understand your frustration and I am escalating this immediately. A senior human support specialist is taking over your session with full context. Expected wait time: 2 minutes.",
+          "ticket_id": "Your priority escalation ticket is #ESC-{ticket_id}."
+        },
+        "es": {
+          "handoff_note": "Comprendo su situación y estoy transfiriendo este caso de inmediato. Un especialista humano asumirá la conversación con todo el historial. Tiempo de espera: 2 minutos.",
+          "ticket_id": "Su ticket de escalación prioritaria es #ESC-{ticket_id}."
+        },
+        "fr": {
+          "handoff_note": "Je comprends parfaitement votre préoccupation. Je vous transfère immédiatement à un conseiller humain avec l'ensemble du dossier. Temps d'attente estimé : 2 minutes.",
+          "ticket_id": "Votre ticket prioritaire est le #ESC-{ticket_id}."
+        },
+        "de": {
+          "handoff_note": "Ich verstehe Ihr Anliegen und übergebe Sie sofort an einen unserer Support-Mitarbeiter mit dem vollständigen Verlauf. Wartezeit: ca. 2 Minuten.",
+          "ticket_id": "Ihre Eskalations-Ticketnummer lautet #ESC-{ticket_id}."
+        },
+        "zh": {
+          "handoff_note": "非常理解您的焦急心情，我已为您转接资深人工客服专员，并将完整会话背景同步传递。预计接入时间约2分钟。",
+          "ticket_id": "您的优先加急处理工单号为 #ESC-{ticket_id}。"
+        },
+        "hi": {
+          "handoff_note": "मैं आपकी असुविधा को समझता हूँ और इसे तुरंत वरिष्ठ कस्टमर सपोर्ट विशेषज्ञ को ट्रांसफर कर रहा हूँ। अपेक्षित प्रतीक्षा समय: 2 मिनट।",
+          "ticket_id": "आपका प्राथमिकता एस्केलेशन टिकट #ESC-{ticket_id} है।"
+        },
+        "ar": {
+          "handoff_note": "أنا أتفهم تماماً انزعاجكم، وسأقوم بتحويل المحادثة فوراً إلى أخصائي دعم بشري مع ملخص كامل للحالة. وقت الانتظار المتوقع: دقيقتان.",
+          "ticket_id": "رقم تذكرة التصعيد العاجل الخاص بكم هو #ESC-{ticket_id}."
+        },
+        "pt": {
+          "handoff_note": "Compreendo perfeitamente o ocorrido. Estou transferindo o seu atendimento agora mesmo para um especialista humano. Tempo estimado: 2 minutos.",
+          "ticket_id": "O número do seu protocolo de atendimento é #ESC-{ticket_id}."
+        },
+        "ru": {
+          "handoff_note": "Я понимаю важность вашего вопроса и немедленно переключаю диалог на старшего специалиста поддержки. Ожидание: около 2 минут.",
+          "ticket_id": "Ваш приоритетный номер обращения #ESC-{ticket_id}."
+        },
+        "sw": {
+          "handoff_note": "Ninaelewa changamoto yako na ninakuunganisha mara moja na mhudumu wetu wa kibinadamu aliye na ujuzi. Atakuwa na taarifa zote za maongezi yetu. Muda wa kusubiri: dakika 2.",
+          "ticket_id": "Nambari yako ya dharura ni #ESC-{ticket_id}."
+        },
+        "yo": {
+          "handoff_note": "Mo mọ bí ọ̀ràn yìí ti ṣe kánjú tó, mo sì ń gbé ọ sọ́dọ̀ òṣìṣẹ́ ẹ̀dá ènìyàn wa lẹ́sẹ̀kẹsẹ̀ pẹ̀lú gbogbo àlàyé rẹ. Àkókò ìdúró: ìṣẹ́jú 2 péré.",
+          "ticket_id": "Nọ́mbà ìwé ìkánjú rẹ ni #ESC-{ticket_id}."
+        },
+        "qu": {
+          "handoff_note": "Hamut'ani llakikuyniykita. Kunanpacham huk yachaysapa runawan tupanachiyki llapa willakuykunantin. Suyana pacha: 2 chinini.",
+          "ticket_id": "Utqhaylla rimanapaq yupayniykiqa kaymi #ESC-{ticket_id}."
+        },
+        "bn": {
+          "handoff_note": "আমি আপনার পরিস্থিতি বুঝতে পেরেছি এবং অবিলম্বে একজন সিনিয়র কাস্টমার সাপোর্ট প্রতিনিধির সাথে আপনাকে যুক্ত করছি। সম্ভাব্য অপেক্ষার সময়: ২ মিনিট।",
+          "ticket_id": "আপনার জরুরি সাপোর্ট টিকেট নম্বর হলো #ESC-{ticket_id}।"
+        },
+        "ta": {
+          "handoff_note": "உங்கள் சூழ்நிலையை நான் முழுமையாகப் புரிந்துகொள்கிறேன். இந்த உரையாடலை உடனடியாக எங்கள் வாடிக்கையாளர் சேவை நிபுணரிடம் மாற்றுகிறேன். காத்திருக்கும் நேரம்: 2 நிமிடங்கள்.",
+          "ticket_id": "உங்கள் முன்னுரிமை சேவை எண் #ESC-{ticket_id} ஆகும்."
+        },
+        "eu": {
+          "handoff_note": "Ulertzen dut zure kezka eta berehala bideratuko zaitut gure giza laguntzaile nagusiarekin elkarrizketaren xehetasun guztiekin. Itxaronaldia: 2 minutu.",
+          "ticket_id": "Zure lehentasunezko txartela #ESC-{ticket_id} da."
+        },
+        "tl": {
+          "handoff_note": "Nauunawaan ko po ang inyong sitwasyon at agad ko po kayong ililipat sa isang human support specialist kalakip ang buong detalye ng ating usapan. Maghintay lamang ng 2 minuto.",
+          "ticket_id": "Ang iyong priority escalation ticket ay #ESC-{ticket_id}."
+        },
+        "am": {
+          "handoff_note": "ሁኔታዎን በሚገባ ተረድቻለሁ፤ ውይይቱን ወዲያውኑ ወደ ከፍተኛ ባለሙያ ጋር አስተላልፋለሁ። የሚጠበቀው የጥበቃ ጊዜ 2 ደቂቃ ነው።",
+          "ticket_id": "የቅድሚያ ትኬት ቁጥርዎ #ESC-{ticket_id} ነው።"
+        },
+        "te": {
+          "handoff_note": "మీ అసౌకర్యాన్ని మేము అర్థం చేసుకున్నాము. పూర్తి వివరాలతో సంభాషణను వెంటనే మా సీనియర్ కస్టమర్ కేర్ నిపుణుడికి బదిలీ చేస్తున్నాము. నిరీక్షణ సమయం: 2 నిమిషాలు.",
+          "ticket_id": "మీ ప్రాధాన్యత ఎస్కలేషన్ టికెట్ నంబర్ #ESC-{ticket_id}."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Low-Resource & Multilingual Customer Support Chatbot | NLP ICL Platform</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+  <div class="app-layout">
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo-mark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            <path d="M8 9h.01"></path>
+            <path d="M12 9h.01"></path>
+            <path d="M16 9h.01"></path>
+          </svg>
+        </div>
+        <div class="header-titles">
+          <h1>PolyglotSupport <span class="badge-nlp">NLP Stream</span></h1>
+          <p class="subtitle">Low-Resource & Multilingual Language Modeling via Prompt Engineering & In-Context Learning</p>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="status-pill" id="headerLanguagePill">
+          <span class="status-indicator"></span>
+          <span class="status-flag" id="activeFlag">🌐</span>
+          <span class="status-text" id="activeLanguageText">Auto-Detect Language</span>
+          <span class="tier-tag tier-low" id="activeTierTag">LRL Enabled</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" id="btnOpenBenchmark" title="Run Benchmark Evaluation">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          Benchmark Suite
+        </button>
+        <button class="btn btn-secondary btn-sm" id="btnOpenExemplars" title="View Exemplar Memory Bank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Exemplar Bank
+        </button>
+        <button class="btn btn-icon btn-sm" id="themeToggle" title="Toggle Theme">
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="workspace-container">
+      <!-- Left Configuration Panel -->
+      <aside class="sidebar-panel">
+        <div class="panel-section">
+          <div class="section-header">
+            <h3>Language Selection</h3>
+            <span class="info-badge" title="Select target language or let character n-grams auto-detect">ISO-639</span>
+          </div>
+          <div class="form-group">
+            <label for="languageSelect">Active Customer Language:</label>
+            <select id="languageSelect" class="form-control">
+              <option value="auto">🌐 Auto-Detect (Dynamic N-Gram & Script)</option>
+              <optgroup label="🌍 Low-Resource Languages (LRL)">
+                <option value="sw">🇰🇪 Swahili (Kiswahili) - Bantu</option>
+                <option value="yo">🇳🇬 Yoruba (Èdè Yorùbá) - Niger-Congo</option>
+                <option value="qu">🇵🇪 Quechua (Runasimi) - Andean</option>
+                <option value="bn">🇧🇩 Bengali (বাংলা) - Indic</option>
+                <option value="ta">🇮🇳 Tamil (தமிழ்) - Dravidian</option>
+                <option value="eu">🇪🇸 Basque (Euskara) - Isolate</option>
+                <option value="tl">🇵🇭 Tagalog (Filipino) - Austronesian</option>
+                <option value="am">🇪🇹 Amharic (አማርኛ) - Ethiopic</option>
+                <option value="te">🇮🇳 Telugu (తెలుగు) - Dravidian</option>
+              </optgroup>
+              <optgroup label="🌏 Medium-Resource Languages (MRL)">
+                <option value="hi">🇮🇳 Hindi (हिन्दी) - Devanagari</option>
+                <option value="ar">🇸🇦 Arabic (العربية) - Semitic</option>
+                <option value="pt">🇧🇷 Portuguese (Português) - Romance</option>
+                <option value="ru">🇷🇺 Russian (Русский) - Slavic</option>
+              </optgroup>
+              <optgroup label="🌐 High-Resource Languages (HRL)">
+                <option value="en">🇬🇧 English - Germanic</option>
+                <option value="es">🇪🇸 Spanish (Español) - Romance</option>
+                <option value="fr">🇫🇷 French (Français) - Romance</option>
+                <option value="de">🇩🇪 German (Deutsch) - Germanic</option>
+                <option value="zh">🇨🇳 Chinese (中文) - Sino-Tibetan</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="lang-meta-card" id="langMetaCard">
+            <div class="meta-row">
+              <span class="meta-label">Tier:</span>
+              <span class="meta-value tier-badge" id="metaTier">Dynamic Auto-Detect</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Family:</span>
+              <span class="meta-value" id="metaFamily">Cross-Lingual Subword</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Script:</span>
+              <span class="meta-value" id="metaScript">Multi-Script Detector</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-header">
+            <h3>Prompt Engineering Strategy</h3>
+            <span class="info-badge" title="NLP Paradigm for In-Context Learning">ICL Mode</span>
+          </div>
+          <div class="form-group">
+            <label for="strategySelect">Prompt Paradigm:</label>
+            <select id="strategySelect" class="form-control">
+              <option value="few_shot">1. Monolingual Few-Shot (Direct ICL)</option>
+              <option value="cross_lingual_icl">2. Cross-Lingual ICL (X-ICL)</option>
+              <option value="chain_of_thought" selected>3. Multilingual Chain-of-Thought (X-CoT)</option>
+              <option value="pivot_grounding">4. Pivot Lexicon Grounding</option>
+              <option value="zero_shot">5. Zero-Shot Baseline (Comparison)</option>
+            </select>
+          </div>
+          <p class="strategy-explanation" id="strategyExplanation">
+            Enforces step-by-step cognitive decomposition: Language Identification → Intent Classification → Entity Extraction → Policy Lookup → Target Resolution.
+          </p>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-header">
+            <h3>In-Context Parameters</h3>
+          </div>
+          <div class="form-group">
+            <div class="slider-label-row">
+              <label for="kShotsSlider">Exemplars Count (k-shots):</label>
+              <span class="slider-val" id="kShotsValue">3</span>
+            </div>
+            <input type="range" id="kShotsSlider" min="0" max="5" value="3" class="slider-control">
+            <div class="slider-ticks">
+              <span>0 (Zero)</span>
+              <span>1</span>
+              <span>3</span>
+              <span>5 (Max)</span>
+            </div>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="toggle-switch">
+              <input type="checkbox" id="groundingToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-text">Inject Low-Resource Bilingual Glossaries</span>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="section-header">
+            <h3>Quick Test Scenarios</h3>
+          </div>
+          <div class="quick-scenarios" id="quickScenarios">
+            <!-- Dynamically populated based on active language -->
+          </div>
+        </div>
+
+        <div class="panel-footer">
+          <button class="btn btn-outline btn-block btn-sm" id="btnClearChat">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Clear Conversation
+          </button>
+          <button class="btn btn-outline btn-block btn-sm" id="btnExportChat">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Export Transcript
+          </button>
+        </div>
+      </aside>
+
+      <!-- Center Chat Area -->
+      <main class="chat-main">
+        <div class="chat-header-bar">
+          <div class="chat-header-info">
+            <div class="agent-avatar">🤖</div>
+            <div>
+              <h2>Multilingual Enterprise Support Agent</h2>
+              <p class="agent-sub">Powered by Dynamic Subword Retrieval & Multilingual Prompt Engineering</p>
+            </div>
+          </div>
+          <div class="chat-header-stats">
+            <div class="stat-item">
+              <span class="stat-number" id="statMessageCount">0</span>
+              <span class="stat-name">Messages</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="statAvgLatency">0ms</span>
+              <span class="stat-name">Avg Latency</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <!-- Welcome message rendered here -->
+        </div>
+
+        <!-- Suggestion Chips Bar -->
+        <div class="suggestion-chips-bar" id="suggestionChipsBar">
+          <span class="chip-label">Quick Intent:</span>
+          <div class="chips-container" id="chipsContainer">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="chat-input-area">
+          <form class="chat-form" id="chatForm">
+            <div class="input-wrapper">
+              <textarea 
+                id="chatInput" 
+                class="chat-textarea" 
+                rows="1" 
+                placeholder="Type your inquiry in any language (e.g., Swahili, Yoruba, Quechua, English, Bengali, Tamil, etc.)..."
+                required
+              ></textarea>
+              <button type="submit" class="btn-send" id="btnSend" title="Send message (Enter)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </form>
+          <div class="input-footer">
+            <span>Low-Resource In-Context Learning Active</span>
+            <span>Shift + Enter for new line</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Sliding Prompt & ICL Inspector Drawer -->
+      <aside class="inspector-drawer" id="inspectorDrawer">
+        <div class="drawer-header">
+          <div class="drawer-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <h3>Prompt Engineering & ICL Inspector</h3>
+          </div>
+          <button class="btn-close-drawer" id="btnCloseDrawer" title="Close Drawer">&times;</button>
+        </div>
+
+        <div class="drawer-tabs">
+          <button class="tab-btn active" data-tab="tab-prompt">Assembled Prompt</button>
+          <button class="tab-btn" data-tab="tab-exemplars">In-Context Exemplars</button>
+          <button class="tab-btn" data-tab="tab-cot">Chain-of-Thought</button>
+          <button class="tab-btn" data-tab="tab-grounding">Lexical Grounding</button>
+        </div>
+
+        <div class="drawer-content">
+          <!-- Tab 1: Assembled Prompt -->
+          <div class="tab-pane active" id="tab-prompt">
+            <div class="meta-strip">
+              <span class="badge" id="inspStrategyBadge">Strategy</span>
+              <span class="badge" id="inspLanguageBadge">Language</span>
+              <span class="badge" id="inspTokensBadge">~0 tokens</span>
+            </div>
+            <div class="prompt-section">
+              <h4>System Instructions & Persona:</h4>
+              <pre class="code-box"><code id="inspSystemPrompt">No active prompt</code></pre>
+            </div>
+            <div class="prompt-section">
+              <h4>Demonstrations & Exemplar Block:</h4>
+              <pre class="code-box"><code id="inspDemoBlock">No active demonstrations</code></pre>
+            </div>
+            <div class="prompt-section">
+              <h4>Current User Query Turn:</h4>
+              <pre class="code-box"><code id="inspUserTurn">No query</code></pre>
+            </div>
+          </div>
+
+          <!-- Tab 2: In-Context Exemplars -->
+          <div class="tab-pane" id="tab-exemplars">
+            <div class="exemplars-header">
+              <h4>Dynamically Retrieved Demonstration Memory</h4>
+              <p>Ranked using Subword Character N-Gram TF-IDF and BM25 Similarity.</p>
+            </div>
+            <div class="exemplars-list" id="inspExemplarsList">
+              <!-- Cards injected by JS -->
+            </div>
+          </div>
+
+          <!-- Tab 3: Chain of Thought -->
+          <div class="tab-pane" id="tab-cot">
+            <div class="cot-header">
+              <h4>Multilingual Decomposed Cognitive Steps</h4>
+              <p>Step-by-step reasoning for intent, entities, SLA policy, and target generation.</p>
+            </div>
+            <div class="cot-timeline" id="inspCotTimeline">
+              <!-- Steps injected by JS -->
+            </div>
+          </div>
+
+          <!-- Tab 4: Lexical Grounding -->
+          <div class="tab-pane" id="tab-grounding">
+            <div class="grounding-header">
+              <h4>Low-Resource Domain Bilingual Glossaries</h4>
+              <p>Injected dictionary terms preventing hallucination and loan-word drift.</p>
+            </div>
+            <div class="grounding-table-wrapper">
+              <table class="grounding-table">
+                <thead>
+                  <tr>
+                    <th>Customer Support Concept</th>
+                    <th>Target Language Translation</th>
+                  </tr>
+                </thead>
+                <tbody id="inspGroundingTableBody">
+                  <!-- Injected by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Modal: Evaluation & Benchmark Suite -->
+    <div class="modal-backdrop" id="benchmarkModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <div class="modal-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <h2>NLP Benchmark Suite: Prompt Engineering & ICL in Low-Resource Languages</h2>
+          </div>
+          <button class="modal-close" id="btnCloseBenchmark">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">
+            This benchmark systematically compares 5 Prompt Engineering paradigms across low-resource languages (Swahili, Yoruba, Quechua, Bengali, Tamil, Basque, Tagalog, Amharic), measuring Intent Classification Accuracy, Policy SLA Adherence, ROUGE-L Lexical Overlap, and Vocabulary Grounding.
+          </p>
+
+          <div class="benchmark-controls">
+            <button class="btn btn-primary" id="btnRunBenchmark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Execute Benchmark Run
+            </button>
+            <div class="benchmark-status" id="benchmarkStatus">Ready to execute.</div>
+          </div>
+
+          <div class="benchmark-results" id="benchmarkResults" style="display: none;">
+            <h3>Comparative Paradigm Evaluation Matrix</h3>
+            <div class="table-responsive">
+              <table class="benchmark-table">
+                <thead>
+                  <tr>
+                    <th>Prompting Paradigm</th>
+                    <th>Intent Accuracy</th>
+                    <th>Policy SLA Adherence</th>
+                    <th>ROUGE-L Overlap</th>
+                    <th>Vocab Grounding</th>
+                    <th>Avg Latency</th>
+                  </tr>
+                </thead>
+                <tbody id="benchmarkTableBody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="chart-comparisons" id="chartComparisons">
+              <!-- Visual progress bars injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Exemplar Memory Bank Explorer -->
+    <div class="modal-backdrop" id="exemplarsModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-header">
+          <div class="modal-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <h2>In-Context Demonstration Memory Bank</h2>
+          </div>
+          <button class="modal-close" id="btnCloseExemplars">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="exemplar-filter-bar">
+            <select id="exemplarLangFilter" class="form-control form-control-sm">
+              <option value="">All Languages</option>
+              <option value="sw">Swahili (sw)</option>
+              <option value="yo">Yoruba (yo)</option>
+              <option value="qu">Quechua (qu)</option>
+              <option value="bn">Bengali (bn)</option>
+              <option value="ta">Tamil (ta)</option>
+              <option value="eu">Basque (eu)</option>
+              <option value="tl">Tagalog (tl)</option>
+              <option value="am">Amharic (am)</option>
+              <option value="te">Telugu (te)</option>
+              <option value="en">English (en)</option>
+            </select>
+            <select id="exemplarIntentFilter" class="form-control form-control-sm">
+              <option value="">All Intents</option>
+              <option value="order_tracking">Order Tracking</option>
+              <option value="refund_cancellation">Refund & Cancellation</option>
+              <option value="account_access">Account Access</option>
+              <option value="billing_issues">Billing Issues</option>
+              <option value="human_escalation">Human Escalation</option>
+            </select>
+          </div>
+          <div class="bank-list" id="bankList">
+            <!-- Cards populated by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+  </div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/benchmark.js"></script>
+</body>
+</html>

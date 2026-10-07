@@ -1,0 +1,318 @@
+{
+  "languages": {
+    "en": {
+      "code": "en",
+      "name": "English",
+      "native_name": "English",
+      "tier": "high",
+      "family": "Indo-European (Germanic)",
+      "script": "Latin",
+      "flag": "🇬🇧",
+      "greetings": ["Hello", "Hi there", "Good day"],
+      "common_words": ["the", "is", "at", "which", "on", "order", "my", "package", "where", "refund", "return", "support", "help"],
+      "sample_queries": [
+        {"text": "Where is my order #ORD-98231? It has been delayed for 3 days.", "intent": "order_tracking"},
+        {"text": "I received a defective wireless headphone, can I request a refund or replacement?", "intent": "refund_cancellation"},
+        {"text": "My account is locked and I cannot reset my two-factor authentication password.", "intent": "account_access"},
+        {"text": "I was charged twice on my credit card for invoice #INV-44120.", "intent": "billing_issues"},
+        {"text": "I need to talk to a human agent right now regarding an urgent legal dispute.", "intent": "human_escalation"}
+      ]
+    },
+    "es": {
+      "code": "es",
+      "name": "Spanish",
+      "native_name": "Español",
+      "tier": "high",
+      "family": "Indo-European (Romance)",
+      "script": "Latin",
+      "flag": "🇪🇸",
+      "greetings": ["Hola", "Buenos días", "Buenas tardes"],
+      "common_words": ["el", "la", "de", "que", "en", "pedido", "mi", "paquete", "dónde", "reembolso", "devolución", "ayuda", "soporte"],
+      "sample_queries": [
+        {"text": "¿Dónde está mi pedido #ORD-77412? La entrega lleva retrasada 2 días.", "intent": "order_tracking"},
+        {"text": "Quiero devolver este producto defectuoso y solicitar un reembolso total a mi tarjeta.", "intent": "refund_cancellation"},
+        {"text": "No puedo acceder a mi cuenta, olvidé la contraseña y no recibo el correo.", "intent": "account_access"},
+        {"text": "Me cobraron dos veces en la factura #INV-30219 por la misma compra.", "intent": "billing_issues"},
+        {"text": "Por favor comuníquenme con un operador humano urgente.", "intent": "human_escalation"}
+      ]
+    },
+    "fr": {
+      "code": "fr",
+      "name": "French",
+      "native_name": "Français",
+      "tier": "high",
+      "family": "Indo-European (Romance)",
+      "script": "Latin",
+      "flag": "🇫🇷",
+      "greetings": ["Bonjour", "Salut", "Bonsoir"],
+      "common_words": ["le", "la", "les", "de", "des", "commande", "mon", "colis", "où", "remboursement", "retour", "aide"],
+      "sample_queries": [
+        {"text": "Où est ma commande #ORD-88123 ? Le suivi n'a pas bougé depuis 4 jours.", "intent": "order_tracking"},
+        {"text": "L'article reçu est endommagé, comment obtenir un remboursement complet ?", "intent": "refund_cancellation"},
+        {"text": "Impossible de me connecter à mon compte client, mot de passe bloqué.", "intent": "account_access"},
+        {"text": "Il y a une erreur sur ma facture #INV-12940 avec des frais supplémentaires.", "intent": "billing_issues"}
+      ]
+    },
+    "de": {
+      "code": "de",
+      "name": "German",
+      "native_name": "Deutsch",
+      "tier": "high",
+      "family": "Indo-European (Germanic)",
+      "script": "Latin",
+      "flag": "🇩🇪",
+      "greetings": ["Guten Tag", "Hallo", "Guten Morgen"],
+      "common_words": ["der", "die", "das", "und", "bestellung", "meine", "paket", "wo", "rückerstattung", "rechnung", "hilfe"],
+      "sample_queries": [
+        {"text": "Wo befindet sich meine Bestellung #ORD-45210? Sendungsverfolgung aktualisiert nicht.", "intent": "order_tracking"},
+        {"text": "Ich möchte den defekten Artikel zurücksenden und eine Erstattung anfordern.", "intent": "refund_cancellation"},
+        {"text": "Ich habe eine doppelte Abbuchung auf meiner Rechnung #INV-88321 bemerkt.", "intent": "billing_issues"}
+      ]
+    },
+    "zh": {
+      "code": "zh",
+      "name": "Chinese",
+      "native_name": "中文",
+      "tier": "high",
+      "family": "Sino-Tibetan",
+      "script": "Hanzi",
+      "flag": "🇨🇳",
+      "greetings": ["您好", "早上好", "下午好"],
+      "common_words": ["的", "在", "我", "订单", "包裹", "退款", "退货", "物流", "发票", "客服", "密码"],
+      "sample_queries": [
+        {"text": "我的订单 #ORD-66789 在哪里？物流已经三天没有更新了。", "intent": "order_tracking"},
+        {"text": "收到的商品有破损，我想申请全额退款或者换货。", "intent": "refund_cancellation"},
+        {"text": "我的账户被锁定了，无法接收验证码重置密码。", "intent": "account_access"},
+        {"text": "账单 #INV-55219 上多扣了一笔费用，请协助退款。", "intent": "billing_issues"}
+      ]
+    },
+    "hi": {
+      "code": "hi",
+      "name": "Hindi",
+      "native_name": "हिन्दी",
+      "tier": "medium",
+      "family": "Indo-European (Indo-Aryan)",
+      "script": "Devanagari",
+      "flag": "🇮🇳",
+      "greetings": ["नमस्ते", "प्रणाम", "नमस्कार"],
+      "common_words": ["का", "की", "के", "में", "मेरा", "ऑर्डर", "पार्सल", "रिफंड", "खाता", "मदद", "पैसा"],
+      "sample_queries": [
+        {"text": "मेरा ऑर्डर #ORD-55412 कहाँ है? डिलीवरी में 4 दिन की देरी हो चुकी है।", "intent": "order_tracking"},
+        {"text": "मुझे खराब सामान मिला है, क्या मुझे पूरा रिफंड या रिप्लेसमेंट मिल सकता है?", "intent": "refund_cancellation"},
+        {"text": "मेरे खाते का पासवर्ड रीसेट नहीं हो रहा है, ओटीपी नहीं आ रहा।", "intent": "account_access"},
+        {"text": "मेरे क्रेडिट कार्ड से इनवॉइस #INV-99210 पर दो बार पैसे कट गए हैं।", "intent": "billing_issues"},
+        {"text": "मुझे तुरंत किसी कस्टमर केयर अधिकारी से बात करनी है।", "intent": "human_escalation"}
+      ]
+    },
+    "ar": {
+      "code": "ar",
+      "name": "Arabic",
+      "native_name": "العربية",
+      "tier": "medium",
+      "family": "Afroasiatic (Semitic)",
+      "script": "Arabic",
+      "flag": "🇸🇦",
+      "greetings": ["مرحباً", "أهلاً وسهلاً", "السلام عليكم"],
+      "common_words": ["في", "من", "على", "طلب", "شحنة", "استرجاع", "حساب", "فاتورة", "مساعدة", "أين"],
+      "sample_queries": [
+        {"text": "أين طلبي رقم #ORD-33219؟ تتبع الشحنة متوقف منذ يومين.", "intent": "order_tracking"},
+        {"text": "استلمت منتجاً تالفاً وأريد استرداد المبلغ بالكامل إلى بطاقتي.", "intent": "refund_cancellation"},
+        {"text": "تم خصم المبلغ مرتين في الفاتورة رقم #INV-77123.", "intent": "billing_issues"}
+      ]
+    },
+    "pt": {
+      "code": "pt",
+      "name": "Portuguese",
+      "native_name": "Português",
+      "tier": "medium",
+      "family": "Indo-European (Romance)",
+      "script": "Latin",
+      "flag": "🇧🇷",
+      "greetings": ["Olá", "Bom dia", "Boa tarde"],
+      "common_words": ["o", "a", "de", "em", "pedido", "meu", "pacote", "onde", "reembolso", "fatura", "ajuda"],
+      "sample_queries": [
+        {"text": "Onde está o meu pedido #ORD-21094? O rastreio não atualiza há 3 dias.", "intent": "order_tracking"},
+        {"text": "Gostaria de cancelar minha compra e solicitar o estorno do valor pago.", "intent": "refund_cancellation"},
+        {"text": "Não consigo entrar na minha conta após alterar meu endereço de email.", "intent": "account_access"}
+      ]
+    },
+    "ru": {
+      "code": "ru",
+      "name": "Russian",
+      "native_name": "Русский",
+      "tier": "medium",
+      "family": "Indo-European (Slavic)",
+      "script": "Cyrillic",
+      "flag": "🇷🇺",
+      "greetings": ["Здравствуйте", "Привет", "Добрый день"],
+      "common_words": ["в", "на", "и", "заказ", "мой", "посылка", "где", "возврат", "счет", "помощь"],
+      "sample_queries": [
+        {"text": "Где мой заказ #ORD-44912? Доставка задерживается уже на 3 дня.", "intent": "order_tracking"},
+        {"text": "Товар пришел с браком, как оформить возврат средств?", "intent": "refund_cancellation"},
+        {"text": "С меня дважды списали деньги по счету #INV-66321.", "intent": "billing_issues"}
+      ]
+    },
+    "sw": {
+      "code": "sw",
+      "name": "Swahili",
+      "native_name": "Kiswahili",
+      "tier": "low",
+      "family": "Niger-Congo (Bantu)",
+      "script": "Latin",
+      "flag": "🇰🇪",
+      "greetings": ["Hujambo", "Habari", "Salama"],
+      "common_words": ["ya", "wa", "kwa", "katika", "agizo", "langu", "mzigo", "wapi", "rejesha", "pesa", "msaada", "akaunti", "ankara"],
+      "sample_queries": [
+        {"text": "Agizo langu #ORD-10928 liko wapi? Limechelewa kwa siku tatu sasa.", "intent": "order_tracking"},
+        {"text": "Nimepokea bidhaa iliyoharibika, naomba kurejeshewa pesa zangu kamili.", "intent": "refund_cancellation"},
+        {"text": "Siwezi kuingia kwenye akaunti yangu, nimesahau nenosiri langu la siri.", "intent": "account_access"},
+        {"text": "Nimekatwa pesa mara mbili kwenye ankara #INV-39821 ya ununuzi.", "intent": "billing_issues"},
+        {"text": "Kifaa changu hakifanyi kazi hata nikichomeka chaji, msaada wa kiufundi tafadhali.", "intent": "technical_support"},
+        {"text": "Ninataka kuongea na mhudumu wa kibinadamu mara moja kuhusu tatizo hili.", "intent": "human_escalation"}
+      ]
+    },
+    "yo": {
+      "code": "yo",
+      "name": "Yoruba",
+      "native_name": "Èdè Yorùbá",
+      "tier": "low",
+      "family": "Niger-Congo (Defoid)",
+      "script": "Latin",
+      "flag": "🇳🇬",
+      "greetings": ["Ẹ n lẹ́ o", "Báwo ni", "Ẹ kú àárọ̀"],
+      "common_words": ["ti", "ní", "fún", "àti", "àṣẹ", "ẹrù", "mi", "dá", "owó", "ìwé", "ìrànlọ́wọ́", "ìsanpadà", "àkọọ́lẹ̀"],
+      "sample_queries": [
+        {"text": "Ibo ni àṣẹ mi #ORD-73910 wà? Ẹrù mi ti pẹ́ fún ọjọ́ mẹ́ta.", "intent": "order_tracking"},
+        {"text": "Mo fẹ́ da nǹkan tí mo rà padà kí n sì gba ìsanpadà owó mi nítorí ó bàjẹ́.", "intent": "refund_cancellation"},
+        {"text": "Mi ò lè wọ inú àkọọ́lẹ̀ mi, ọ̀rọ̀-ìpamọ́ mi ti sọnù.", "intent": "account_access"},
+        {"text": "Wọ́n gba owó lẹ́ẹ̀mejì lórí ìwé-owó #INV-84910 fún ẹrù kan ṣoṣo.", "intent": "billing_issues"},
+        {"text": "Ẹ jọ̀ọ́, mo fẹ́ bá èèyàn tòótọ́ sọ̀rọ̀ nípa wàhálà yìí kánjúkánjú.", "intent": "human_escalation"}
+      ]
+    },
+    "qu": {
+      "code": "qu",
+      "name": "Quechua",
+      "native_name": "Runasimi",
+      "tier": "low",
+      "family": "Quechuan (Andean Indigenous)",
+      "script": "Latin",
+      "flag": "🇵🇪",
+      "greetings": ["Allillanchu", "Rimaykullayki", "Allinllachu"],
+      "common_words": ["hina", "pi", "maypi", "rantiy", "kutiypas", "qullqi", "yanapay", "khipu", "yupay", "ñan"],
+      "sample_queries": [
+        {"text": "¿Maypin kachkan rantiy #ORD-66201? Kimsa p'unchawñan mana chayamunchu.", "intent": "order_tracking"},
+        {"text": "Waqllisqa rantisqayta kutichiyta munani, qullqiyta kutichipuway.", "intent": "refund_cancellation"},
+        {"text": "Yuyasqa khipuyta qunqani, manam haykuyta atinichu cuentasniyman.", "intent": "account_access"},
+        {"text": "Iskay kutita qullqita hurquwanku factura #INV-92011 nisqapi.", "intent": "billing_issues"},
+        {"text": "Usqhaylla runawan rimayta munani, sasachakuyniyta allichanapaq.", "intent": "human_escalation"}
+      ]
+    },
+    "bn": {
+      "code": "bn",
+      "name": "Bengali",
+      "native_name": "বাংলা",
+      "tier": "low",
+      "family": "Indo-European (Indo-Aryan)",
+      "script": "Bengali",
+      "flag": "🇧🇩",
+      "greetings": ["নমস্কার", "হ্যালো", "সালাম"],
+      "common_words": ["আমার", "অর্ডার", "কোথায়", "টাকা", "ফেরত", "পণ্য", "সাহায্য", "বিল", "পাসওয়ার্ড"],
+      "sample_queries": [
+        {"text": "আমার অর্ডার #ORD-99321 কোথায়? ৩ দিন ধরে কোনো আপডেট নেই।", "intent": "order_tracking"},
+        {"text": "আমি নষ্ট পণ্য পেয়েছি, আমি কি টাকা ফেরত বা প্রতিস্থাপন পেতে পারি?", "intent": "refund_cancellation"},
+        {"text": "আমার অ্যাকাউন্টে লগইন করতে পারছি না, পাসওয়ার্ড ভুলে গেছি।", "intent": "account_access"},
+        {"text": "ইনভয়েস #INV-33201 এ আমার থেকে দুইবার টাকা কাটা হয়েছে।", "intent": "billing_issues"},
+        {"text": "আমি জরুরি ভিত্তিতে একজন প্রতিনিধির সাথে সরাসরি কথা বলতে চাই।", "intent": "human_escalation"}
+      ]
+    },
+    "ta": {
+      "code": "ta",
+      "name": "Tamil",
+      "native_name": "தமிழ்",
+      "tier": "low",
+      "family": "Dravidian",
+      "script": "Tamil",
+      "flag": "🇮🇳",
+      "greetings": ["வணக்கம்", "நல்வரவு"],
+      "common_words": ["என்", "ஆர்டர்", "எங்கே", "பணம்", "திரும்ப", "பொருள்", "உதவி", "கணக்கு", "விலைப்பட்டியல்"],
+      "sample_queries": [
+        {"text": "எனது ஆர்டர் #ORD-77291 எங்கே உள்ளது? மூன்று நாட்களாக தாமதமாகிறது.", "intent": "order_tracking"},
+        {"text": "பழுதடைந்த பொருள் கிடைத்துள்ளது, பணத்தைத் திரும்பப் பெற விரும்புகிறேன்.", "intent": "refund_cancellation"},
+        {"text": "என் கணக்கில் உள்நுழைய முடியவில்லை, கடவுச்சொல்லை மீட்டமைக்க உதவி தேவை.", "intent": "account_access"},
+        {"text": "விலைப்பட்டியல் #INV-55102 க்கு இரண்டு முறை பணம் பிடிக்கப்பட்டுள்ளது.", "intent": "billing_issues"},
+        {"text": "தயவுசெய்து என்னை ஒரு வாடிக்கையாளர் சேவை அதிகாரியுடன் இணைக்கவும்.", "intent": "human_escalation"}
+      ]
+    },
+    "eu": {
+      "code": "eu",
+      "name": "Basque",
+      "native_name": "Euskara",
+      "tier": "low",
+      "family": "Language Isolate",
+      "script": "Latin",
+      "flag": "🇪🇸",
+      "greetings": ["Kaixo", "Egun on", "Arratsalde on"],
+      "common_words": ["eta", "ere", "da", "nire", "eskaera", "non", "itzulketa", "faktura", "laguntza", "kontua"],
+      "sample_queries": [
+        {"text": "Non dago nire #ORD-50192 eskaera? Hiru eguneko atzerapena du.", "intent": "order_tracking"},
+        {"text": "Produktua hondatuta iritsi da, dirua itzultzea eskatzen dut.", "intent": "refund_cancellation"},
+        {"text": "Ezin dut nire kontuan sartu, pasahitza ahaztu zait.", "intent": "account_access"},
+        {"text": "#INV-40192 fakturan birritan kobratu didate zenbatekoa.", "intent": "billing_issues"}
+      ]
+    },
+    "tl": {
+      "code": "tl",
+      "name": "Tagalog / Filipino",
+      "native_name": "Tagalog",
+      "tier": "low",
+      "family": "Austronesian (Malayo-Polynesian)",
+      "script": "Latin",
+      "flag": "🇵🇭",
+      "greetings": ["Kamusta", "Magandang araw", "Mabuhay"],
+      "common_words": ["ang", "ng", "sa", "aking", "order", "nasaan", "refund", "pera", "tulong", "account", "bayad"],
+      "sample_queries": [
+        {"text": "Nasaan na po ang aking order na #ORD-66120? Matagal nang naantala.", "intent": "order_tracking"},
+        {"text": "Gusto ko pong mag-refund dahil sira ang natanggap kong gamit.", "intent": "refund_cancellation"},
+        {"text": "Hindi ako makapasok sa account ko, nawala ang recovery password.", "intent": "account_access"},
+        {"text": "Nadoble ang bawas sa credit card ko para sa invoice #INV-77312.", "intent": "billing_issues"},
+        {"text": "Kailangan ko pong makausap agad ang isang live agent ngayon.", "intent": "human_escalation"}
+      ]
+    },
+    "am": {
+      "code": "am",
+      "name": "Amharic",
+      "native_name": "አማርኛ",
+      "tier": "low",
+      "family": "Afroasiatic (Semitic)",
+      "script": "Ethiopic",
+      "flag": "🇪🇹",
+      "greetings": ["ሰላም", "እንደምን ዋሉ", "እንደምን አደሩ"],
+      "common_words": ["የኔ", "ትዕዛዝ", "የት", "ነው", "ገንዘብ", "መመለስ", "እርዳታ", "መለያ", "ደረሰኝ"],
+      "sample_queries": [
+        {"text": "የትእዛዝ ቁጥሬ #ORD-38102 የት ደረሰ? ለሶስት ቀናት ዘግይቷል።", "intent": "order_tracking"},
+        {"text": "የተበላሸ እቃ ስለደረሰኝ ገንዘቤን ሙሉ በሙሉ መመለስ እፈልጋለሁ።", "intent": "refund_cancellation"},
+        {"text": "ወደ መለያዬ መግባት አልቻልኩም፣ የይለፍ ቃሌን ረሳሁት።", "intent": "account_access"},
+        {"text": "በደረሰኝ #INV-49201 ላይ ሁለት ጊዜ ገንዘብ ተቀንሶብኛል።", "intent": "billing_issues"}
+      ]
+    },
+    "te": {
+      "code": "te",
+      "name": "Telugu",
+      "native_name": "తెలుగు",
+      "tier": "low",
+      "family": "Dravidian",
+      "script": "Telugu",
+      "flag": "🇮🇳",
+      "greetings": ["నమస్కారం", "హలో", "స్వాగతం"],
+      "common_words": ["నా", "ఆర్డర్", "ఎక్కడ", "డబ్బులు", "రీఫండ్", "వస్తువు", "సహాయం", "ఖాతా", "పాస్‌వర్డ్", "ఇన్‌వాయిస్", "రద్దు", "డెలివరీ"],
+      "sample_queries": [
+        {"text": "నా ఆర్డర్ #ORD-88312 ఎక్కడ ఉంది? డెలివరీ 3 రోజులు ఆలస్యమైంది.", "intent": "order_tracking"},
+        {"text": "నాకు పాడైన వస్తువు వచ్చింది, పూర్తి రీఫండ్ లేదా రీప్లేస్‌మెంట్ కావాలి.", "intent": "refund_cancellation"},
+        {"text": "నా ఖాతా లాగిన్ కావడం లేదు, పాస్‌వర్డ్ రీసెట్ చేయడానికి సహాయం కావాలి.", "intent": "account_access"},
+        {"text": "ఇన్‌వాయిస్ #INV-66120 కి నా క్రెడిట్ కార్డు నుండి రెండు సార్లు డబ్బులు కట్ అయ్యాయి.", "intent": "billing_issues"},
+        {"text": "నా పరికరం ఆన్ కావడం లేదు, వారంటీ క్లెయిమ్ ఎలా చేయాలి?", "intent": "technical_support"},
+        {"text": "దయచేసి నన్ను వెంటనే కస్టమర్ కేర్ ప్రతినిధితో మాట్లాడించండి.", "intent": "human_escalation"}
+      ]
+    }
+  }
+}

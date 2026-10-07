@@ -1,0 +1,202 @@
+{
+  "exemplars": [
+    {
+      "id": "ex_en_01",
+      "language": "en",
+      "intent": "order_tracking",
+      "user_query": "Hello, my order #ORD-44912 has not arrived yet. Where is it?",
+      "entities": {"order_id": "#ORD-44912"},
+      "thought": "1. Language: English (en). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-44912. 4. Policy: Standard shipping SLA is 3-5 days. Check carrier checkpoint. 5. Action: Confirm transit status and provide express delivery timeline with apology for delay.",
+      "bot_response": "Hello! Your order #ORD-44912 is currently in transit with our express carrier. Estimated arrival is within 24-48 hours. We sincerely apologize for the delay and have flagged this for priority handling."
+    },
+    {
+      "id": "ex_en_02",
+      "language": "en",
+      "intent": "refund_cancellation",
+      "user_query": "I received broken items in order #ORD-12093. I want my money back.",
+      "entities": {"order_id": "#ORD-12093"},
+      "thought": "1. Language: English (en). 2. Intent: refund_cancellation. 3. Entity: order_id=#ORD-12093. 4. Policy: 30-day guarantee covers damaged goods. Refund timeline 3-5 business days or instant store credit. 5. Action: Authorize refund and send prepaid label.",
+      "bot_response": "We are very sorry to hear that your items arrived damaged. Your refund request for order #ORD-12093 has been authorized under our 30-day guarantee. A full refund will be processed to your original payment method in 3-5 business days, and a prepaid return label has been emailed to you."
+    },
+    {
+      "id": "ex_en_03",
+      "language": "en",
+      "intent": "account_access",
+      "user_query": "I cannot log into my account. I forgot my password and phone verification isn't working.",
+      "entities": {},
+      "thought": "1. Language: English (en). 2. Intent: account_access. 3. Policy: Trigger secure cryptographic password reset link valid for 30 minutes. 4. Action: Provide security link and identity verification steps.",
+      "bot_response": "For your protection, we have triggered a secure account recovery link to your registered email address. This link remains valid for 30 minutes. Please click the link to verify your identity and set a new strong password."
+    },
+    {
+      "id": "ex_en_04",
+      "language": "en",
+      "intent": "billing_issues",
+      "user_query": "Why was I charged twice for invoice #INV-55219 on my credit card?",
+      "entities": {"invoice_id": "#INV-55219"},
+      "thought": "1. Language: English (en). 2. Intent: billing_issues. 3. Entity: invoice_id=#INV-55219. 4. Policy: Duplicate authorization holds are automatically released within 24-48 hours. 5. Action: Confirm duplicate identification and issue credit confirmation.",
+      "bot_response": "We identified the duplicate billing record on invoice #INV-55219. The pending authorization hold will be automatically reversed to your statement within 24-48 hours. No further action is required from you."
+    },
+    {
+      "id": "ex_en_05",
+      "language": "en",
+      "intent": "human_escalation",
+      "user_query": "This bot is useless! Connect me to a real human supervisor immediately!",
+      "entities": {},
+      "thought": "1. Language: English (en). 2. Intent: human_escalation. 3. Sentiment: High frustration. 4. Policy: Immediate tier-2 handoff with full context preservation. SLA under 2 minutes. 5. Action: Provide escalation ticket and smooth transfer.",
+      "bot_response": "I understand your frustration and I am escalating this immediately. A senior human support specialist is taking over your session with full context. Expected wait time: 2 minutes. Your priority escalation ticket is #ESC-9941."
+    },
+    {
+      "id": "ex_sw_01",
+      "language": "sw",
+      "intent": "order_tracking",
+      "user_query": "Habari, agizo langu #ORD-10928 liko wapi? Limechelewa kwa siku tatu sasa.",
+      "entities": {"order_id": "#ORD-10928"},
+      "thought": "1. Language: Swahili (sw, low-resource Bantu). 2. Intent: order_tracking (ufuatiliaji wa agizo). 3. Entity: order_id=#ORD-10928. 4. Policy: Standard SLA 3-5 days. Check transit. 5. Action: Reassure customer in polite Swahili ('Agizo lako lipo safarini') and provide 24-48h ETA.",
+      "bot_response": "Habari! Agizo lako #ORD-10928 lipo safarini kwa sasa. Linatarajiwa kuwasili ndani ya saa 24 hadi 48. Tunaomba radhi kwa kuchelewa, na tumefungua ombi la dharura la kufuatilia mzigo wako kwenye kituo cha usafirishaji."
+    },
+    {
+      "id": "ex_sw_02",
+      "language": "sw",
+      "intent": "refund_cancellation",
+      "user_query": "Nimepokea bidhaa iliyoharibika kwa agizo #ORD-88210, naomba kurejeshewa pesa zangu kamili.",
+      "entities": {"order_id": "#ORD-88210"},
+      "thought": "1. Language: Swahili (sw). 2. Intent: refund_cancellation (kurejesha bidhaa na kupata pesa). 3. Entity: order_id=#ORD-88210. 4. Policy: 30-day guarantee, 3-5 business days refund. 5. Action: Confirm refund approval and shipping label in Swahili.",
+      "bot_response": "Pole sana kwa changamoto hiyo. Ombi lako la kurudisha bidhaa kwa agizo #ORD-88210 limeidhinishwa chini ya sera yetu ya siku 30. Pesa zako zitarudishwa kwenye akaunti yako ndani ya siku 3-5 za kazi. Kibarua cha usafirishaji wa bure kimetumwa kwenye barua pepe yako."
+    },
+    {
+      "id": "ex_sw_03",
+      "language": "sw",
+      "intent": "account_access",
+      "user_query": "Siwezi kuingia kwenye akaunti yangu, nimesahau nenosiri langu la siri.",
+      "entities": {},
+      "thought": "1. Language: Swahili (sw). 2. Intent: account_access (usalama wa akaunti). 3. Policy: Send 30-min recovery link. 4. Action: Explain reset process in natural Swahili.",
+      "bot_response": "Kwa usalama wa akaunti yako, tumetuma kiungo salama cha kubadilisha nenosiri kwenye barua pepe yako (kinadumu kwa dakika 30). Tafadhali bofya kiungo hicho kuthibitisha utambulisho wako na kuweka nenosiri jipya imara."
+    },
+    {
+      "id": "ex_yo_01",
+      "language": "yo",
+      "intent": "order_tracking",
+      "user_query": "Ẹ n lẹ́ o, ibo ni àṣẹ mi #ORD-73910 wà? Ẹrù mi ti pẹ́ fún ọjọ́ mẹ́ta.",
+      "entities": {"order_id": "#ORD-73910"},
+      "thought": "1. Language: Yoruba (yo, low-resource Niger-Congo). 2. Intent: order_tracking (ìtọpinpin àṣẹ). 3. Entity: order_id=#ORD-73910. 4. Policy: Transit check 24-48h. 5. Action: Greet respectfully in Yoruba ('Ẹ n lẹ́ o') and confirm shipping update.",
+      "bot_response": "Ẹ n lẹ́ o! Àṣẹ rẹ #ORD-73910 ti wà lójú ọ̀nà pẹ̀lú ilé-iṣẹ́ agbébìkèérò. Yóò dé láàárín wákàtí 24 sí 48. A tọrọ àforíjì fún ìdádúró yìí, a ti gbé ìwé ìbéèrè kánjúkánjú dìde láti wádìí ibi tí ẹrù rẹ wà."
+    },
+    {
+      "id": "ex_yo_02",
+      "language": "yo",
+      "intent": "refund_cancellation",
+      "user_query": "Mo fẹ́ da nǹkan tí mo rà padà kí n sì gba ìsanpadà owó mi nítorí ó bàjẹ́ lórí #ORD-39102.",
+      "entities": {"order_id": "#ORD-39102"},
+      "thought": "1. Language: Yoruba (yo). 2. Intent: refund_cancellation (ìsanpadà owó àti ìdápadà ẹrù). 3. Entity: order_id=#ORD-39102. 4. Policy: 30-day policy, 3-5 days. 5. Action: Confirm refund authorization in Yoruba.",
+      "bot_response": "A ti gba ìbéèrè ìpadàbọ̀ ẹrù rẹ fún #ORD-39102 wọlé lábẹ́ àdéhùn ọjọ́ 30 wa. A ó san owó rẹ padà sínú káàdì rẹ láàárín ọjọ́ iṣẹ́ 3 sí 5. A ti fi àmì ìwé ìpadàbọ̀ tí a ti sanwó lé lórí ránṣẹ́ sí lẹ́tà-ayélujára rẹ."
+    },
+    {
+      "id": "ex_qu_01",
+      "language": "qu",
+      "intent": "order_tracking",
+      "user_query": "Allillanchu, ¿maypin kachkan rantiy #ORD-66201? Kimsa p'unchawñan mana chayamunchu.",
+      "entities": {"order_id": "#ORD-66201"},
+      "thought": "1. Language: Quechua (qu, low-resource Andean). 2. Intent: order_tracking (puriy yachay). 3. Entity: order_id=#ORD-66201. 4. Policy: 24-48h ETA. 5. Action: Reply in Quechua with polite greeting ('Allillanchu').",
+      "bot_response": "Allillanchu! Rantisqayki #ORD-66201 purichkanñam apachina llikawan. 24-48 horakunapi chayamunqa. Pampachawayku unaykusqanmanta, utqhaylla maskanapaq willakuyta qillqaykuñam apachina wasiman."
+    },
+    {
+      "id": "ex_qu_02",
+      "language": "qu",
+      "intent": "refund_cancellation",
+      "user_query": "Waqllisqa rantisqayta #ORD-55102 kutichiyta munani, qullqiyta kutichipuway.",
+      "entities": {"order_id": "#ORD-55102"},
+      "thought": "1. Language: Quechua (qu). 2. Intent: refund_cancellation (qullqi kutichiy). 3. Entity: order_id=#ORD-55102. 4. Policy: 30-day refund guarantee. 5. Action: Confirm refund in Quechua.",
+      "bot_response": "Rantisqa kutichiy mañakuyniyki #ORD-55102 chaskisqañam 30 p'unchaw qhawariypi. Qullqiykita 3-5 p'unchawpi kutichisaykiku rantinapaq khipuykiman. Kutichina rapita apachiykuñam chaski-chaskiykiman."
+    },
+    {
+      "id": "ex_bn_01",
+      "language": "bn",
+      "intent": "order_tracking",
+      "user_query": "আমার অর্ডার #ORD-99321 কোথায়? ৩ দিন ধরে কোনো আপডেট নেই।",
+      "entities": {"order_id": "#ORD-99321"},
+      "thought": "1. Language: Bengali (bn, Indic script). 2. Intent: order_tracking (অর্ডার ট্র্যাকিং). 3. Entity: order_id=#ORD-99321. 4. Policy: Courier update 24-48 hours. 5. Action: Confirm in formal polite Bengali.",
+      "bot_response": "হ্যালো! আপনার অর্ডার #ORD-99321 বর্তমানে ডেলিভারির পথে রয়েছে। পরবর্তী ২৪-৪৮ ঘণ্টার মধ্যে পৌঁছানোর সম্ভাবনা রয়েছে। বিলম্বের জন্য আমরা আন্তরিকভাবে দুঃখিত; আমরা কুরিয়ার ডিপোতে জরুরি ট্র্যাকিং নির্দেশ পাঠিয়েছি।"
+    },
+    {
+      "id": "ex_bn_02",
+      "language": "bn",
+      "intent": "refund_cancellation",
+      "user_query": "আমি নষ্ট পণ্য পেয়েছি #ORD-44120 এর জন্য, আমি কি টাকা ফেরত পেতে পারি?",
+      "entities": {"order_id": "#ORD-44120"},
+      "thought": "1. Language: Bengali (bn). 2. Intent: refund_cancellation. 3. Entity: order_id=#ORD-44120. 4. Policy: 30-day guarantee, 3-5 days refund. 5. Action: Approve refund.",
+      "bot_response": "আমাদের ৩০ দিনের সন্তুষ্টি গ্যারান্টির অধীনে #ORD-44120 অর্ডারের রিফান্ড আবেদন গৃহীত হয়েছে। ৩-৫ কার্যদিবসের মধ্যে আপনার মূল পেমেন্ট মাধ্যমে টাকা ফেরত পাবেন। একটি প্রিপেইড রিটার্ন লেবেল আপনার ইমেইলে পাঠিয়ে দেওয়া হয়েছে।"
+    },
+    {
+      "id": "ex_ta_01",
+      "language": "ta",
+      "intent": "order_tracking",
+      "user_query": "வணக்கம், எனது ஆர்டர் #ORD-77291 எங்கே உள்ளது? மூன்று நாட்களாக தாமதமாகிறது.",
+      "entities": {"order_id": "#ORD-77291"},
+      "thought": "1. Language: Tamil (ta, Dravidian script). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-77291. 4. Policy: 24-48 hours delivery SLA. 5. Action: Confirm shipment status in polite Tamil.",
+      "bot_response": "வணக்கம்! உங்கள் ஆர்டர் #ORD-77291 தற்போது விரைவு கூரியர் மூலம் அனுப்பப்பட்டு வழியில் உள்ளது. 24-48 மணி நேரத்திற்குள் வந்து சேரும். தாமதத்திற்கு வருந்துகிறோம்; உங்கள் பார்சலை விரைவுபடுத்த விநியோக மையத்திற்கு முன்னுரிமை கோரிக்கை விடுத்துள்ளோம்."
+    },
+    {
+      "id": "ex_eu_01",
+      "language": "eu",
+      "intent": "order_tracking",
+      "user_query": "Kaixo, non dago nire #ORD-50192 eskaera? Hiru eguneko atzerapena du.",
+      "entities": {"order_id": "#ORD-50192"},
+      "thought": "1. Language: Basque (eu, language isolate). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-50192. 4. Policy: Express transit 24-48h. 5. Action: Confirm delivery and apologize in Basque.",
+      "bot_response": "Kaixo! Zure #ORD-50192 eskaera bidean da mezulari azkarrarekin. 24-48 orduko epean iritsiko dela aurreikusten da. Barkatu atzerapena; lehentasunezko jarraipen-txartela ireki dugu banaketa zentroarekin."
+    },
+    {
+      "id": "ex_tl_01",
+      "language": "tl",
+      "intent": "order_tracking",
+      "user_query": "Kamusta po, nasaan na po ang aking order na #ORD-66120? Matagal nang naantala.",
+      "entities": {"order_id": "#ORD-66120"},
+      "thought": "1. Language: Tagalog (tl, Austronesian). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-66120. 4. Policy: Express dispatch 24-48h. 5. Action: Polite response with 'po/opo' in Tagalog.",
+      "bot_response": "Kamusta po! Ang inyong order na #ORD-66120 ay kasalukuyan nang ipinapadala. Inaasahang darating ito sa loob ng 24-48 oras. Humihingi po kami ng paumanhin sa abala; nagsumite na po kami ng priority ticket para mapabilis ang paghahatid."
+    },
+    {
+      "id": "ex_am_01",
+      "language": "am",
+      "intent": "order_tracking",
+      "user_query": "ሰላም፣ የትእዛዝ ቁጥሬ #ORD-38102 የት ደረሰ? ለሶስት ቀናት ዘግይቷል።",
+      "entities": {"order_id": "#ORD-38102"},
+      "thought": "1. Language: Amharic (am, Ethiopic script). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-38102. 4. Policy: 24-48h arrival. 5. Action: Response in Amharic.",
+      "bot_response": "ሰላም! ትዕዛዝዎ #ORD-38102 በመጓጓዝ ላይ ይገኛል። በሚቀጥሉት 24-48 ሰዓታት ውስጥ ይደርሳል። ስለዘገየብዎት ይቅርታ እንጠይቃለን፤ እቃዎትን በፍጥነት ለመከታተል አፋጣኝ ጥያቄ ለስርጭት ማዕከሉ ልከናል።"
+    },
+    {
+      "id": "ex_es_01",
+      "language": "es",
+      "intent": "order_tracking",
+      "user_query": "Hola, ¿dónde está mi pedido #ORD-77412? Lleva retrasado dos días.",
+      "entities": {"order_id": "#ORD-77412"},
+      "thought": "1. Language: Spanish (es). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-77412. 4. Policy: 24-48h delivery SLA. 5. Action: Spanish response with tracking apology.",
+      "bot_response": "¡Hola! Su pedido #ORD-77412 está actualmente en tránsito con servicio urgente. La entrega estimada es de 24 a 48 horas. Lamentamos profundamente el retraso; hemos abierto un ticket de seguimiento prioritario con nuestro centro logístico."
+    },
+    {
+      "id": "ex_hi_01",
+      "language": "hi",
+      "intent": "order_tracking",
+      "user_query": "नमस्ते, मेरा ऑर्डर #ORD-55412 कहाँ है? डिलीवरी में 4 दिन की देरी हो चुकी है।",
+      "entities": {"order_id": "#ORD-55412"},
+      "thought": "1. Language: Hindi (hi). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-55412. 4. Policy: 24-48 hours. 5. Action: Polite Hindi response.",
+      "bot_response": "नमस्ते! आपका ऑर्डर #ORD-55412 वर्तमान में ट्रांज़िट में है। 24 से 48 घंटों के भीतर डिलीवरी होने की उम्मीद है। देरी के लिए हम क्षमा चाहते हैं; हमने पूर्ति केंद्र के साथ प्राथमिकता ट्रैकिंग टिकट दर्ज कर दिया है।"
+    },
+    {
+      "id": "ex_te_01",
+      "language": "te",
+      "intent": "order_tracking",
+      "user_query": "నమస్కారం, నా ఆర్డర్ #ORD-88312 ఎక్కడ ఉంది? 3 రోజులు ఆలస్యమైంది.",
+      "entities": {"order_id": "#ORD-88312"},
+      "thought": "1. Language: Telugu (te, Dravidian script). 2. Intent: order_tracking. 3. Entity: order_id=#ORD-88312. 4. Policy: 24-48 hours delivery SLA. 5. Action: Confirm shipment status in polite Telugu.",
+      "bot_response": "నమస్కారం! మీ ఆర్డర్ #ORD-88312 ప్రస్తుతం ఎక్స్‌ప్రెస్ కొరియర్ ద్వారా రవాణాలో ఉంది. రాబోయే 24-48 గంటల్లో డెలివరీ చేయబడుతుంది. ఆలస్యానికి క్షమాపణలు కోరుతున్నాము; మీ పార్శిల్ ట్రాకింగ్ కోసం మా డెలివరీ బృందానికి అత్యవసర టికెట్ పంపాము."
+    },
+    {
+      "id": "ex_te_02",
+      "language": "te",
+      "intent": "refund_cancellation",
+      "user_query": "నాకు పాడైన వస్తువు అందింది #ORD-44120, నా డబ్బులు రీఫండ్ చేయగలరా?",
+      "entities": {"order_id": "#ORD-44120"},
+      "thought": "1. Language: Telugu (te). 2. Intent: refund_cancellation. 3. Entity: order_id=#ORD-44120. 4. Policy: 30-day guarantee, 3-5 days refund. 5. Action: Confirm refund approval in Telugu.",
+      "bot_response": "మా 30 రోజుల గ్యారెంటీ పాలసీ ప్రకారం #ORD-44120 ఆర్డర్ రిటర్న్ అభ్యర్థన ఆమోదించబడింది. 3-5 పనిదినాల్లో మీ ఖాతాకు పూర్తి మొత్తం రీఫండ్ చేయబడుతుంది. ఉచిత ప్రీపెయిడ్ రిటర్న్ లేబుల్ మీ ఈమెయిల్‌కు పంపబడింది."
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "glossaries": {
+    "sw": {
+      "language": "Swahili",
+      "terms": {
+        "order": "agizo",
+        "package": "mzigo",
+        "tracking": "ufuatiliaji",
+        "shipping": "usafirishaji",
+        "refund": "urejeshaji wa pesa",
+        "return": "kurejesha bidhaa",
+        "invoice": "ankara ya malipo",
+        "account": "akaunti",
+        "password": "nenosiri la siri",
+        "defective": "iliyo na kasoro / iliyoharibika",
+        "warranty": "udhamini wa mtengenezaji",
+        "support agent": "mhudumu wa huduma kwa wateja",
+        "credit card": "kadi ya malipo",
+        "delay": "kuchelewa"
+      }
+    },
+    "yo": {
+      "language": "Yoruba",
+      "terms": {
+        "order": "àṣẹ / nǹkan tí a pa láṣẹ",
+        "package": "ẹrù / àpótí",
+        "tracking": "ìtọpinpin ẹrù",
+        "shipping": "ìgbébìkèérò / ríránṣẹ́",
+        "refund": "ìsanpadà owó",
+        "return": "ìdápadà ẹrù",
+        "invoice": "ìwé-ìṣirò owó",
+        "account": "àkọọ́lẹ̀",
+        "password": "ọ̀rọ̀-ìpamọ́",
+        "defective": "bíbàjẹ́ / àlébù",
+        "warranty": "àdéhùn ìtọ́jú ọdún kan",
+        "support agent": "òṣìṣẹ́ olùrànlọ́wọ́",
+        "credit card": "káàdì ìsanwó",
+        "delay": "ìdádúró"
+      }
+    },
+    "qu": {
+      "language": "Quechua",
+      "terms": {
+        "order": "rantiy / mañasqa",
+        "package": "apachisqa / q'ipi",
+        "tracking": "ñan qhaway / puriy yachay",
+        "shipping": "apachiy",
+        "refund": "qullqi kutichiy",
+        "return": "rantisqa kutichiy",
+        "invoice": "factura / chanin rapra",
+        "account": "cuentas / khipu",
+        "password": "yuyasqa khipu / pakana simi",
+        "defective": "waqllisqa / thunasqa",
+        "warranty": "allin kawsay garantía",
+        "support agent": "yanapaq runa",
+        "credit card": "rantina khipu tarjeta",
+        "delay": "unaykuy"
+      }
+    },
+    "bn": {
+      "language": "Bengali",
+      "terms": {
+        "order": "অর্ডার (Order)",
+        "package": "পার্সেল / প্যাকেজ",
+        "tracking": "ট্র্যাকিং / স্থিতি পরীক্ষণ",
+        "shipping": "ডেলিভারি / পরিবহন",
+        "refund": "টাকা ফেরত (Refund)",
+        "return": "পণ্য ফেরত (Return)",
+        "invoice": "ইনভয়েস / রশিদ",
+        "account": "অ্যাকাউন্ট",
+        "password": "পাসওয়ার্ড",
+        "defective": "ত্রুটিপূর্ণ / নষ্ট",
+        "warranty": "ওয়ারেন্টি",
+        "support agent": "সহায়তা প্রতিনিধি",
+        "credit card": "ক্রেডিট কার্ড",
+        "delay": "বিলম্ব"
+      }
+    },
+    "ta": {
+      "language": "Tamil",
+      "terms": {
+        "order": "ஆர்டர் / பதிவு",
+        "package": "பார்சல் / தொகுப்பு",
+        "tracking": "கண்காணிப்பு / ட்ராக்கிங்",
+        "shipping": "விநியோகம்",
+        "refund": "பணம் திரும்பப் பெறுதல்",
+        "return": "பொருள் திரும்புதல்",
+        "invoice": "விலைப்பட்டியல் (Invoice)",
+        "account": "கணக்கு (Account)",
+        "password": "கடவுச்சொல்",
+        "defective": "பழுதடைந்த பொருள்",
+        "warranty": "உத்தரவாதம் (Warranty)",
+        "support agent": "வாடிக்கையாளர் சேவை அலுவலர்",
+        "credit card": "கடன் அட்டை",
+        "delay": "தாமதம்"
+      }
+    },
+    "eu": {
+      "language": "Basque",
+      "terms": {
+        "order": "eskaera",
+        "package": "paketea",
+        "tracking": "jarraipena",
+        "shipping": "bidalketa",
+        "refund": "diru-itzulketa",
+        "return": "itzulketa",
+        "invoice": "faktura",
+        "account": "kontua",
+        "password": "pasahitza",
+        "defective": "akastuna / hondatua",
+        "warranty": "bermea",
+        "support agent": "laguntzailea",
+        "credit card": "kreditu-txartela",
+        "delay": "atzerapena"
+      }
+    },
+    "tl": {
+      "language": "Tagalog",
+      "terms": {
+        "order": "order",
+        "package": "parsel / package",
+        "tracking": "pagsubaybay sa padala",
+        "shipping": "pagpapadala / shipping",
+        "refund": "pagbabalik ng bayad (refund)",
+        "return": "pagbabalik ng gamit (return)",
+        "invoice": "resibo / invoice",
+        "account": "account",
+        "password": "password",
+        "defective": "may sira / depekto",
+        "warranty": "garantiya / warranty",
+        "support agent": "ahente ng customer service",
+        "credit card": "credit card",
+        "delay": "antala / delay"
+      }
+    },
+    "am": {
+      "language": "Amharic",
+      "terms": {
+        "order": "ትዕዛዝ",
+        "package": "እቃ / ፓኬጅ",
+        "tracking": "መከታተያ",
+        "shipping": "ማጓጓዣ",
+        "refund": "የገንዘብ ተመላሽ",
+        "return": "እቃ መመለስ",
+        "invoice": "ደረሰኝ / ኢንቮይስ",
+        "account": "መለያ / አካውንት",
+        "password": "የይለፍ ቃል",
+        "defective": "የተበላሸ / ጉድለት ያለበት",
+        "warranty": "ዋስትና",
+        "support agent": "የደንበኞች አገልግሎት ባለሙያ",
+        "credit card": "ክሬዲት ካርድ",
+        "delay": "መዘግየት"
+      }
+    },
+    "te": {
+      "language": "Telugu",
+      "terms": {
+        "order": "ఆర్డర్ (Order)",
+        "package": "పార్శిల్ / ప్యాకేజీ",
+        "tracking": "ట్రాకింగ్ / స్థితి పర్యవేక్షణ",
+        "shipping": "రవాణా / డెలివరీ",
+        "refund": "రీఫండ్ / డబ్బుల వాపసు",
+        "return": "వస్తువు వాపసు (Return)",
+        "invoice": "ఇన్‌వాయిస్ / బిల్లు",
+        "account": "ఖాతా (Account)",
+        "password": "పాస్‌వర్డ్",
+        "defective": "పాడైన / లోపభూయిష్టమైన",
+        "warranty": "వారంటీ (Warranty)",
+        "support agent": "కస్టమర్ కేర్ ప్రతినిధి",
+        "credit card": "క్రెడిట్ కార్డు",
+        "delay": "ఆలస్యం"
+      }
+    }
+  }
+}
