@@ -9,15 +9,17 @@ Usage:
     python3 app.py --port 8080
 """
 
+import os
 import sys
 import argparse
 from backend.server import run_server
 
 def main():
+    default_port = int(os.environ.get("PORT", 8000))
     parser = argparse.ArgumentParser(
         description="Multilingual & Low-Resource Customer Support Chatbot via Prompt Engineering & In-Context Learning"
     )
-    parser.add_argument("--port", type=int, default=8000, help="Port to bind server (default: 8000)")
+    parser.add_argument("--port", type=int, default=default_port, help=f"Port to bind server (default: {default_port})")
     parser.add_argument("--host", type=str, default="0.0.0.0", help="Host interface (default: 0.0.0.0)")
     args = parser.parse_args()
 
